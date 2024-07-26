@@ -809,7 +809,7 @@ function get_carousalactivedis($flag){
 }
 function get_countcarousel(){
 $this->db2->select('*');
-    $this->db2->from('carousel');
+    $this->db2->from('home_carosel');
     $query = $this->db2->get();
     return $query->num_rows();
 
@@ -820,7 +820,7 @@ public function get_carousel($limit,$start){
     $this->db2->limit($limit,$start);
     //$this->db2->limit($limit,$start);
     $this->db2->select('*');
-    $this->db2->from('carousel');
+    $this->db2->from('home_carosel');
     $query = $this->db2->get();
     return $query->result_array();
 

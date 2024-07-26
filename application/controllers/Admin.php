@@ -5536,8 +5536,8 @@ public function deletetraveldetails(){
 
 public function deletecarousel(){
 	$id=$_GET['id'];
-	$this->db2->where('carouselid',$id);
-	$this->db2->delete('carousel');
+	$this->db2->where('id',$id);
+	$this->db2->delete('home_carosel');
 	echo ($this->db2->affected_rows() != 1) ? 'Error in deleting Carousel' : 'Carousel deleted Successfully';
 
 
@@ -8370,11 +8370,11 @@ public function listcarousel(){
 	if( $this->session->has_userdata('username')) {					
 	}
 	else{
-	  redirect("welcome/services");
+	//   redirect("admin/login");
 	}
 	$this->load->model('Servicesmodel');
 	$config = array();
-	$config["base_url"] = base_url() . "Welcome/listcarousel";
+	$config["base_url"] = base_url() . "Admin/listcarousel";
 	//$config["total_rows"] = $this->sm->get_countsolutions();
 	$config["total_rows"]=$this->sm->get_countcarousel();
 	$config["per_page"] = 10;
@@ -8387,10 +8387,10 @@ public function listcarousel(){
 	//$this->db2->from('problems');
     //$query = $this->db2->get();
     //$data['resultphone']=$query->row();
-	$data['contactus']=$this->sm->get_contactus();
-	$data['newsletter']=$this->sm->get_newsletter();
-	$data['siteinf']=$this->sm->get_siteinf();	
-	$this->load->view('services/listcarousal',$data);
+	// $data['contactus']=$this->sm->get_contactus();
+	// $data['newsletter']=$this->sm->get_newsletter();
+	// $data['siteinf']=$this->sm->get_siteinf();	
+	$this->load->view('admin/listcarousel',$data);
 }
 
 

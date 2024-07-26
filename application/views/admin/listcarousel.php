@@ -16,23 +16,22 @@ require ('conn.php');
   <!-- for ios 7 style, multi-resolution icon of 152x152 -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
-  <link rel="apple-touch-icon" href="./assets/images/logo.png">
+  <link rel="apple-touch-icon" href="<?php echo base_url().'assets/images/logo.png'?>">
   <meta name="apple-mobile-web-app-title" content="Flatkit">
   <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
   <meta name="mobile-web-app-capable" content="yes">
-  <link rel="shortcut icon" sizes="196x196" href="./assets/images/logo.png">
+  <link rel="shortcut icon" sizes="196x196" href="<?php echo base_url().'assets/images/logo1.png'?>">
   
-  <!-- style -->
-  <link rel="stylesheet" href="./assets/animate.css/animate.min.css" type="text/css" />
-  <link rel="stylesheet" href="./assets/glyphicons/glyphicons.css" type="text/css" />
-  <link rel="stylesheet" href="./assets/font-awesome/css/font-awesome.min.css" type="text/css" />
-  <link rel="stylesheet" href="./assets/material-design-icons/material-design-icons.css" type="text/css" />
+  <link rel="stylesheet" href="<?php echo base_url().'assets/animate.css/animate.min.css';?>" type="text/css" />
+  <link rel="stylesheet" href="<?php echo base_url().'assets/glyphicons/glyphicons.css';?>" type="text/css" />
+  <link rel="stylesheet" href="<?php echo base_url().'assets/font-awesome/css/font-awesome.min.css'?>" type="text/css" />
+  <link rel="stylesheet" href="<?php echo base_url().'assets/material-design-icons/material-design-icons.css'?>" type="text/css" />
 
-  <link rel="stylesheet" href="./assets/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+  <link rel="stylesheet" href="<?php echo base_url().'assets/bootstrap/dist/css/bootstrap.min.css'?>" type="text/css" />
   <!-- build:css ./assets/styles/app.min.css -->
-  <link rel="stylesheet" href="./assets/styles/app.css" type="text/css" />
+  <link rel="stylesheet" href="<?php echo base_url().'assets/styles/app.css'?>" type="text/css" />
   <!-- endbuild -->
-  <link rel="stylesheet" href="./assets/styles/font.css" type="text/css" />
+  <link rel="stylesheet" href="<?php echo base_url().'assets/styles/font.css'?>" type="text/css" />
 </head>
 <body>
   <div class="app" id="app">
@@ -48,7 +47,7 @@ require ('conn.php');
         <div class="nav-fold">
         	<a href="profile.html">
         	    <span class="pull-left">
-        	      <img src="./assets/images/a0.jpg" alt="..." class="w-40 img-circle">
+        	      <img src="<?php echo base_url().'assets/images/a0.jpg'?>" alt="..." class="w-40 img-circle">
         	    </span>
         	    <span class="clear hidden-folded p-x">
         	      <span class="block _500">Jean Reyes</span>
@@ -83,11 +82,11 @@ require ('conn.php');
                     <i class="fa fa-fw fa-plus text-muted"></i>
                     <span>New</span>
                   </a>
-                  <div ui-include="'./views/blocks/dropdown.new.html'"></div>
+                  <div ui-include="<?php echo base_url().'assets/views/blocks/dropdown.new.html'?>"></div>
                 </li>
               </ul>
         
-              <div ui-include="'./views/blocks/navbar.form.html'"></div>
+              <div ui-include="<?php echo base_url().'assets/views/blocks/navbar.form.html'?>"></div>
               <!-- / -->
             </div>
             <!-- / navbar collapse -->
@@ -99,16 +98,16 @@ require ('conn.php');
                   <i class="material-icons">&#xe7f5;</i>
                   <span class="label label-sm up warn">3</span>
                 </a>
-                <div ui-include="'./views/blocks/dropdown.notification.html'"></div>
+                <div ui-include="<?php echo base_url().'assets/views/blocks/dropdown.notification.html'?>"></div>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link p-0 clear" href="#" data-toggle="dropdown">
                   <span class="avatar w-32">
-                    <img src="./assets/images/a0.jpg" alt="...">
+                    <img src="<?php echo base_url().'assets/assets/images/a0.jpg'?>" alt="...">
                     <i class="on b-white bottom"></i>
                   </span>
                 </a>
-                <div ui-include="'./views/blocks/dropdown.user.html'"></div>
+                <div ui-include="<?php echo base_url().'assets/views/blocks/dropdown.user.html'?>"></div>
               </li>
               <li class="nav-item hidden-md-up">
                 <a class="nav-link pl-2" data-toggle="collapse" data-target="#collapse">
@@ -161,40 +160,34 @@ require ('conn.php');
         </thead>
         <tbody>
         <?php
-$sql="select * from home_carosel";
-$res=mysqli_query($con,$sql);
-$i=1;
-while($row=mysqli_fetch_array($res))
-{ 
- 
-?>
-          <tr id="row<?php echo $row['id'] ?>">
+        
+        foreach($result as $res){
+          $i=1;
+          $i
+        ?>
+            <tr id="row<?php echo $res['id'] ?>">
             <td><?php echo $i;?></td>
-            <td><?php echo $row['maintitle'] ?></td>
-            <td><?php echo $row['subtitle'] ?></td>
+            <td><?php echo $res['maintitle'] ?></td>
+            <td><?php echo $res['subtitle'] ?></td>
             <?php 
             $imgpath="carosel";
              ?>
-            <td> 
-
-
-            <img  style="height:8em; width:7em" src="<?php echo $imgpath.'/'.trim($row['picture']);  ?>" />
-             
-           </td>
+            <td>
+            <img  style="height:8em; width:7em" src=<?php echo base_url().'uploads/carousel/'.$res['picture']?> >
+            </td>
            <td>
-           <a href="editcarousel.php?id=<?php echo $row['id']; ?>"><button style="background-color: green; color: white; border: none; padding: 5px 10px; margin-right: 5px;" >
+           <a href="editcarousel.php?id=<?php echo $res['id']; ?>"><button style="background-color: green; color: white; border: none; padding: 5px 10px; margin-right: 5px;" >
                 Edit
             </button></a> 
-            <button style="background-color: red; color: white; border: none; padding: 5px 10px;" onclick="del(<?php echo $row['id'] ?>)">
+            <button class="delete btn btn-danger"><a href="#" onclick="delrow(<?php echo $res['id'];?>)">
                 Delete
             </button>
             </td>
           </tr>          
-              
-           <?php 
-            $i++; 
-}
-           ?>                 
+        <?php
+        }
+        ?>      
+                           
         </tbody>
       </table>
     </div>
@@ -219,53 +212,51 @@ while($row=mysqli_fetch_array($res))
 <!-- build:js scripts/app.html.js -->
 <!-- jQuery -->
  <script>
-    function del(id){
-      $.ajax({
-		        type: "GET", //we are using GET method to get data from server side
-		        url: 'delete.php', // get the route value
-		        data: {id:id}, //set data
-		        beforeSend: function () {//We add this before send to disable the button once we submit it so that we prevent the multiple click
-		            
-		        },
-		        success: function (response) {//once the request successfully process to the server side it will return result here
-		            // Reload lists of employees
-	            	// all();
-                $('#row'+id).remove();
-		            alert(response)
-		        }
-		    });
+    function delrow(id){
+$.ajax({
+            type: 'GET',
+            url: "<?php echo base_url().'Admin/deletecarousel';?>",
+            data:{id:id},
+            success:function(data){
+                $("#row"+id).remove();
+                $("#msg").html(data);
+            }
+        });
 
-        
-    }
+}
     </script>
-  <script src="./libs/jquery/jquery/dist/jquery.js"></script>
-<!-- Bootstrap -->
-  <script src="./libs/jquery/tether/dist/js/tether.min.js"></script>
-  <script src="./libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
-<!-- core -->
-  <script src="./libs/jquery/underscore/underscore-min.js"></script>
-  <script src="./libs/jquery/jQuery-Storage-API/jquery.storageapi.min.js"></script>
-  <script src="./libs/jquery/PACE/pace.min.js"></script>
-
-  <script src="scripts/config.lazyload.js"></script>
-
-  <script src="scripts/palette.js"></script>
-  <script src="scripts/ui-load.js"></script>
-  <script src="scripts/ui-jp.js"></script>
-  <script src="scripts/ui-include.js"></script>
-  <script src="scripts/ui-device.js"></script>
-  <script src="scripts/ui-form.js"></script>
-  <script src="scripts/ui-nav.js"></script>
-  <script src="scripts/ui-screenfull.js"></script>
-  <script src="scripts/ui-scroll-to.js"></script>
-  <script src="scripts/ui-toggle-class.js"></script>
-
-  <script src="scripts/app.js"></script>
-
-  <!-- ajax -->
-  <script src="./libs/jquery/jquery-pjax/jquery.pjax.js"></script>
-  <script src="scripts/ajax.js"></script>
+    <!-- ajax -->
+  <!-- <script src="./libs/jquery/jquery-pjax/jquery.pjax.js"></script>
+  <script src="scripts/ajax.js"></script> -->
 <!-- endbuild -->
+
+<script src="<?php echo base_url().'assets/libs/jquery/jquery/dist/jquery.js'?>"></script>
+<!-- Bootstrap -->
+  <script src="<?php echo base_url().'assets/libs/jquery/tether/dist/js/tether.min.js'?>"></script>
+  <script src="<?php echo base_url().'assets/libs/jquery/bootstrap/dist/js/bootstrap.js'?>"></script>
+<!-- core -->
+  <script src="<?php echo base_url().'assets/libs/jquery/underscore/underscore-min.js'?>"></script>
+  <script src="<?php echo base_url().'assets/libs/jquery/jQuery-Storage-API/jquery.storageapi.min.js'?>"></script>
+  <script src="<?php echo base_url().'assets/libs/jquery/PACE/pace.min.js'?>"></script>
+
+  <script src="<?php echo base_url().'assets/scripts/config.lazyload.js'?>"></script>
+
+  <script src="<?php echo base_url().'assets/scripts/palette.js'?>"></script>
+  <script src="<?php echo base_url().'assets/scripts/ui-load.js'?>"></script>
+  <script src="<?php echo base_url().'assets/scripts/ui-jp.js'?>"></script>
+  <script src="<?php echo base_url().'assets/scripts/ui-include.js'?>"></script>
+  <script src="<?php echo base_url().'assets/scripts/ui-device.js'?>"></script>
+  <script src="<?php echo base_url().'assets/scripts/ui-form.js'?>"></script>
+  <script src="<?php echo base_url().'assets/scripts/ui-nav.js'?>"></script>
+  <script src="<?php echo base_url().'assets/scripts/ui-screenfull.js'?>"></script>
+  <script src="<?php echo base_url().'assets/scripts/ui-scroll-to.js'?>"></script>
+  <script src="<?php echo base_url().'assets/scripts/ui-toggle-class.js'?>"></script>
+  <script src="<?php echo base_url().'assets/scripts/app.js'?>"></script>
+  <!-- ajax -->
+  <script src="<?php echo base_url().'assets/libs/jquery/jquery-pjax/jquery.pjax.js'?>"></script>
+  <script src="<?php echo base_url().'assets/scripts/ajax.js'?>"></script>
+
+
 </body>
 </html>
     

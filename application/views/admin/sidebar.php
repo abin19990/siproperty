@@ -46,7 +46,7 @@
                   </a>
                   <ul class="nav-sub">
                     <li>
-                      <a href="<?php echo base_url().'admin/lsitcarousel.php'?>" >
+                      <a href="<?php echo base_url().'admin/listcarousel.php'?>" >
                         <span class="nav-text">Carousel</span>
                       </a>
                     </li>
