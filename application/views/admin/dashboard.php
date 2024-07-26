@@ -40,7 +40,7 @@
        
       <div class="b-t">
         <div class="nav-fold">
-        	<a href="profile.html">
+        	<a href="">
         	    <span class="pull-left">
         	      <img src="<?php echo base_url().'assets/images/a0.jpg'?>" alt="..." class="w-40 img-circle">
         	    </span>
@@ -54,45 +54,19 @@
     </div>
   </div>
   <!-- / -->
-  
+  <!-- nav bar -->
+	<?php 
+	include "header.php";
+	?>
+
   <!-- content -->
-  <div id="content" class="app-content box-shadow-z0" role="main">
-    <div class="app-header white box-shadow">
-        <div class="navbar navbar-toggleable-sm flex-row align-items-center">
-            <!-- Open side - Naviation on mobile -->
-            <a data-toggle="modal" data-target="#aside" class="hidden-lg-up mr-3">
-              <i class="material-icons">&#xe5d2;</i>
-            </a>
-            <!-- / -->
-        
-            <!-- Page title - Bind to $state's title -->
-            <div class="mb-0 h5 no-wrap" ng-bind="$state.current.data.title" id="pageTitle"></div>
-        
-            <!-- navbar collapse -->
-            <div class="collapse navbar-collapse" id="collapse">
-              <!-- link and dropdown -->
-              <ul class="nav navbar-nav mr-auto">
-                <li class="nav-item dropdown">
-                  <a class="nav-link" href data-toggle="dropdown">
-                    <i class="fa fa-fw fa-plus text-muted"></i>
-                    <span>New</span>
-                  </a>
-                  <div ui-include="<?php echo base_url().'assets/views/blocks/dropdown.new.html'?>"></div>
-                </li>
-              </ul>
-        
-              <div ui-include="<?php echo base_url().'assets/views/blocks/navbar.form.html'?>"></div>
-              <!-- / -->
-            </div>
-            <!-- / navbar collapse -->
-        
-            <!-- navbar right -->
-            <ul class="nav navbar-nav ml-auto flex-row">
+
+  <ul class="nav navbar-nav ml-auto flex-row">
               <li class="nav-item dropdown pos-stc-xs">
-                <a class="nav-link mr-2" href data-toggle="dropdown">
+                <!-- <a class="nav-link mr-2" href data-toggle="dropdown">
                   <i class="material-icons">&#xe7f5;</i>
                   <span class="label label-sm up warn">3</span>
-                </a>
+                </a> -->
                 <div ui-include="<?php echo base_url().'assets/views/blocks/dropdown.notification.html'?>"></div>
               </li>
               <li class="nav-item dropdown">
@@ -131,21 +105,22 @@
 <div class="p-a white lt box-shadow">
 	<div class="row">
 		<div class="col-sm-6">
-			<h4 class="mb-0 _300">Welcome to Flatkit</h4>
-			<small class="text-muted">Bootstrap <strong>4</strong> Web App Kit with AngularJS</small>
+			<h4 class="mb-0 _300">Welcome to SI properties</h4>
+			<small class="text-muted">Admin  Pannel</small>
 		</div>
 		<div class="col-sm-6 text-sm-right">
 			<div class="m-y-sm">
 				<span class="m-r-sm">Start manage:</span>
 				<div class="btn-group dropdown">
-		          <button class="btn white btn-sm ">Projects</button>
+		          <!-- <button class="btn white btn-sm ">Projects</button> -->
 		          <button class="btn white btn-sm dropdown-toggle" data-toggle="dropdown"></button>
 		          <div class="dropdown-menu dropdown-menu-scale pull-right">
-		            <a class="dropdown-item" href>Members</a>
+		            <!-- <a class="dropdown-item" href>Members</a>
 		            <a class="dropdown-item" href>Tasks</a>
-		            <a class="dropdown-item" href>Inbox</a>
-		            <div class="dropdown-divider"></div>
+		            <a class="dropdown-item" href>Inbox</a> -->
+		            <!-- <div class="dropdown-divider"></div> -->
 		            <a class="dropdown-item">Profile</a>
+					<a class="dropdown-item">Logout</a>
 		          </div>
 		        </div>
 	        </div>
@@ -381,7 +356,7 @@
 	    <div class="col-sm-12 col-md-6">
 	    	<div class="box">
 	    		<div class="box-header">
-	    			<h3>Open Projects <span class="label warning">9</span></h3>
+	    			<h3>Pages <span class="label warning">8</span></h3>
 	    			<!-- <small>Your data status</small> -->
 	    		</div>
 		    	<ul class="list inset">
@@ -394,30 +369,30 @@
 			          <div class="list-body">
 			          	<div class="m-y-sm pull-right">
 			            	<a href="carousel.php" class="btn btn-xs white">Manage</a>
-			            	<a href class="btn btn-xs white btn-icon"><i class="fa fa-pencil"></i></a>
+			            	
 		            	</div>
 			            <div><a href>Home</a></div>
-			            <!-- <div class="text-sm">
-			            	<span class="text-muted"><strong>5</strong> tasks, <strong>3</strong> issues</span> 
+			            <div class="text-sm">
+			            	<span class="text-muted"><strong>8</strong> Inner headings</span> 
 			            	<span class="label"></span>
-			            </div> -->
+			            </div>
 			          </div>
 			        </li>
 			        <li class="list-item">
 			          <a herf class="list-left">
 			          	<span class="w-40 r-2x _600 text-lg success">
-			            	G
+			            	P
 			            </apan>
 			          </a>
 			          <div class="list-body">
 			          	<div class="m-y-sm pull-right">
 			            	<a href class="btn btn-xs white">Manage</a>
-			            	<a href class="btn btn-xs white btn-icon"><i class="fa fa-pencil"></i></a>
+			            	<!-- <a href class="btn btn-xs white btn-icon"><i class="fa fa-pencil"></i></a> -->
 		            	</div>
 			            <div><a href>Projects</a></div>
 			            <div class="text-sm">
-			            	<!-- <span class="text-muted"><strong>35</strong> tasks, <strong>6</strong> issues</span> 
-			            	<span class="label"></span> -->
+						<span class="text-muted"><strong>8</strong> Inner headings</span> 
+						<span class="label"></span>
 			            </div>
 			          </div>
 			        </li>
@@ -433,10 +408,10 @@
 			            	<a href class="btn btn-xs white btn-icon"><i class="fa fa-pencil"></i></a>
 		            	</div>
 			            <div><a href>Corporate</a></div>
-			            <!-- <div class="text-sm">
+			            <div class="text-sm">
 			            	<span class="text-muted"><strong>52</strong> tasks, <strong>13</strong> issues</span> 
 			            	<span class="label"></span>
-			            </div> -->
+			            </div>
 			          </div>
 			        </li>
 			        <li class="list-item">

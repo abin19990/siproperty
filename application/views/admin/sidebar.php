@@ -4,9 +4,9 @@
   	  <div class="navbar no-radius">
         <!-- brand -->
         <a class="navbar-brand">
-        	<div ui-include="'./assets/images/logo.svg'"></div>
-        	<img src="./assets/images/logo.png" alt="." class="hide">
-        	<span class="hidden-folded inline">Flatkit</span>
+        	<div ui-include="<?php echo base_url().'assets/images/logo.svg'?>"></div>
+        	<img src="<?php echo base_url().'assets/images/logo1.png'?>" alt="." class="hide">
+        	<span class="hidden-folded inline">SI PROPERTY</span>
         </a>
         <!-- / brand -->
       </div>
@@ -19,10 +19,10 @@
                 </li>
                 
                 <li>
-                  <a href="dashboard.html" >
+                  <a href="<?php echo base_url().'Admin/dashboard'?>" >
                     <span class="nav-icon">
                       <i class="material-icons">&#xe3fc;
-                        <span ui-include="'./assets/images/i_0.svg'"></span>
+                        <span ui-include="<?php echo base_url().'assets/images/i_0.svg'?>"></span>
                       </i>
                     </span>
                     <span class="nav-text">Dashboard</span>
@@ -39,27 +39,52 @@
                     </span> -->
                     <span class="nav-icon">
                       <i class="material-icons">&#xe5c3;
-                        <span ui-include="'./assets/images/i_1.svg'"></span>
+                        <span ui-include="<?php echo base_url().'assets/images/i_1.svg'?>"></span>
                       </i>
                     </span>
                     <span class="nav-text">Home</span>
                   </a>
                   <ul class="nav-sub">
                     <li>
-                      <a href="<?php echo base_url().'admin/listcarousel.php'?>" >
+                      <a href="<?php echo base_url().'Admin/listcarousel'?>" >
                         <span class="nav-text">Carousel</span>
                       </a>
                     </li>
                     <li>
-                      <a href="contact.html" >
+                      <a href="#" >
                         <span class="nav-text">Our story</span>
                       </a>
                     </li>
-                    <!-- <li>
-                      <a href="calendar.html" >
-                        <span class="nav-text">Calendar</span>
+                    <li>
+                      <a href="#" >
+                        <span class="nav-text">Ongoing Projects</span>
                       </a>
-                    </li> -->
+                    </li>
+                    <li>
+                      <a href="#" >
+                        <span class="nav-text">Completed Projects</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" >
+                        <span class="nav-text">Choose us</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" >
+                        <span class="nav-text">Video</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" >
+                        <span class="nav-text">Blog</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" >
+                        <span class="nav-text">Subcribition</span>
+                      </a>
+                    </li>
                   </ul>
                 </li>
             
@@ -70,7 +95,7 @@
                     </span>
                     <span class="nav-icon">
                       <i class="material-icons">&#xe8f0;
-                        <span ui-include="'./assets/images/i_2.svg'"></span>
+                        <span ui-include="<?php echo base_url().'assets/images/i_2.svg'?>"></span>
                       </i>
                     </span>
                     <span class="nav-text">Projects</span>
@@ -101,29 +126,180 @@
                     </span>
                     <span class="nav-icon">
                       <i class="material-icons">&#xe8f0;
-                        <span ui-include="'./assets/images/i_2.svg'"></span>
+                        <span ui-include="<?php echo base_url().'assets/images/i_2.svg'?>"></span>
                       </i>
                     </span>
-                    <span class="nav-text">Projects</span>
+                    <span class="nav-text">Cooperate</span>
                   </a>
                   <ul class="nav-sub">
                     <li>
                       <a href="headers.html" >
-                        <span class="nav-text">Header</span>
+                        <span class="nav-text">About us</span>
                       </a>
                     </li>
                     <li>
                       <a href="asides.html" >
-                        <span class="nav-text">Aside</span>
+                        <span class="nav-text">Mangement</span>
                       </a>
                     </li>
                     <li>
                       <a href="footers.html" >
-                        <span class="nav-text">Footer</span>
+                        <span class="nav-text">recognition</span>
                       </a>
                     </li>
                   </ul>
                 </li>
+                <li>
+                  <a>
+                    <span class="nav-caret">
+                      <i class="fa fa-caret-down"></i>
+                    </span>
+                    <span class="nav-icon">
+                      <i class="material-icons">&#xe8f0;
+                        <span ui-include="<?php echo base_url().'assets/images/i_2.svg'?>"></span>
+                      </i>
+                    </span>
+                    <span class="nav-text">Rental/Resales</span>
+                  </a>
+                  <!-- <ul class="nav-sub">
+                    <li>
+                      <a href="headers.html" >
+                        <span class="nav-text">About us</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="asides.html" >
+                        <span class="nav-text">Mangement</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="footers.html" >
+                        <span class="nav-text">recognition</span>
+                      </a>
+                    </li>
+                  </ul> -->
+                </li>
+                <li>
+                  <a>
+                    <span class="nav-caret">
+                      <i class="fa fa-caret-down"></i>
+                    </span>
+                    <span class="nav-icon">
+                      <i class="material-icons">&#xe8f0;
+                        <span ui-include="<?php echo base_url().'assets/images/i_2.svg'?>"></span>
+                      </i>
+                    </span>
+                    <span class="nav-text">Homecare</span>
+                  </a>
+                  <!-- <ul class="nav-sub">
+                    <li>
+                      <a href="headers.html" >
+                        <span class="nav-text">About us</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="asides.html" >
+                        <span class="nav-text">Mangement</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="footers.html" >
+                        <span class="nav-text">recognition</span>
+                      </a>
+                    </li>
+                  </ul> -->
+                </li>
+                <li>
+                  <a>
+                    <span class="nav-caret">
+                      <i class="fa fa-caret-down"></i>
+                    </span>
+                    <span class="nav-icon">
+                      <i class="material-icons">&#xe8f0;
+                        <span ui-include="<?php echo base_url().'assets/images/i_2.svg'?>"></span>
+                      </i>
+                    </span>
+                    <span class="nav-text">Showcase</span>
+                  </a>
+                  <!-- <ul class="nav-sub">
+                    <li>
+                      <a href="headers.html" >
+                        <span class="nav-text">About us</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="asides.html" >
+                        <span class="nav-text">Mangement</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="footers.html" >
+                        <span class="nav-text">recognition</span>
+                      </a>
+                    </li>
+                  </ul> -->
+                </li>
+                <li>
+                  <a>
+                    <span class="nav-caret">
+                      <i class="fa fa-caret-down"></i>
+                    </span>
+                    <span class="nav-icon">
+                      <i class="material-icons">&#xe8f0;
+                        <span ui-include="<?php echo base_url().'assets/images/i_2.svg'?>"></span>
+                      </i>
+                    </span>
+                    <span class="nav-text">Career</span>
+                  </a>
+                  <!-- <ul class="nav-sub">
+                    <li>
+                      <a href="headers.html" >
+                        <span class="nav-text">About us</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="asides.html" >
+                        <span class="nav-text">Mangement</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="footers.html" >
+                        <span class="nav-text">recognition</span>
+                      </a>
+                    </li>
+                  </ul> -->
+                </li>
+                <li>
+                  <a>
+                    <span class="nav-caret">
+                      <i class="fa fa-caret-down"></i>
+                    </span>
+                    <span class="nav-icon">
+                      <i class="material-icons">&#xe8f0;
+                        <span ui-include="<?php echo base_url().'assets/images/i_2.svg'?>"></span>
+                      </i>
+                    </span>
+                    <span class="nav-text">Contact</span>
+                  </a>
+                  <ul class="nav-sub">
+                    <li>
+                      <a href="headers.html" >
+                        <span class="nav-text">About us</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="asides.html" >
+                        <span class="nav-text">Mangement</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="footers.html" >
+                        <span class="nav-text">recognition</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
                 <li class="nav-header hidden-folded">
                   <small class="text-muted">Components</small>
                 </li>
@@ -138,7 +314,7 @@
                     </span>
                     <span class="nav-icon">
                       <i class="material-icons">&#xe429;
-                        <span ui-include="'./assets/images/i_4.svg'"></span>
+                        <span ui-include="<?php echo base_url().'assets/images/i_4.svg'?>"></span>
                       </i>
                     </span>
                     <span class="nav-text">UI kit</span>
@@ -240,7 +416,7 @@
                     <span class="nav-label"><b class="label no-bg">9</b></span>
                     <span class="nav-icon">
                       <i class="material-icons">&#xe3e8;
-                        <span ui-include="'./assets/images/i_5.svg'"></span>
+                        <span ui-include="<?php echo base_url().'assets/images/i_5.svg'?>"></span>
                       </i>
                     </span>
                     <span class="nav-text">Pages</span>
@@ -326,7 +502,7 @@
                     </span>
                     <span class="nav-icon">
                       <i class="material-icons">&#xe39e;
-                        <span ui-include="'./assets/images/i_6.svg'"></span>
+                        <span ui-include="<?php echo base_url().'assets/images/i_6.svg'?>"></span>
                       </i>
                     </span>
                     <span class="nav-text">Form</span>
@@ -382,7 +558,7 @@
                     </span>
                     <span class="nav-icon">
                       <i class="material-icons">&#xe896;
-                        <span ui-include="'./assets/images/i_7.svg'"></span>
+                        <span ui-include="<?php echo base_url().'assets/images/i_7.svg'?>"></span>
                       </i>
                     </span>
                     <span class="nav-text">Tables</span>
@@ -415,7 +591,7 @@
                     </span>
                     <span class="nav-icon">
                       <i class="material-icons">&#xe1b8;
-                        <span ui-include="'./assets/images/i_8.svg'"></span>
+                        <span ui-include="<?php echo base_url().'assets/images/i_8.svg'?>"></span>
                       </i>
                     </span>
                     <span class="nav-text">Charts</span>
