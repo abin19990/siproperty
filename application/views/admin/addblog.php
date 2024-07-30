@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Flatkit - HTML Version | Bootstrap 4 Web App Kit with AngularJS</title>
+  <title>Add Blog</title>
   <meta name="description" content="Admin, Dashboard, Bootstrap, Bootstrap 4, Angular, AngularJS" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,32 +10,52 @@
   <!-- for ios 7 style, multi-resolution icon of 152x152 -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
-  <link rel="apple-touch-icon" href="<?php echo base_url().'assets/images/logo1.png'?>">
+  <link rel="apple-touch-icon" href="<?php echo base_url().'assets/images/logo.png'?>">
   <meta name="apple-mobile-web-app-title" content="Flatkit">
   <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
   <meta name="mobile-web-app-capable" content="yes">
-  <link rel="shortcut icon" sizes="196x196" href="<?php echo base_url().'assets/images/logo1.png'?>">
+  <link rel="shortcut icon" sizes="196x196" href="<?php echo base_url().'assets/images/logo.png'?>">
   
   <!-- style -->
-  <link rel="stylesheet" href="<?php echo base_url().'assets/animate.css/animate.min.css';?>" type="text/css" />
-  <link rel="stylesheet" href="<?php echo base_url().'assets/glyphicons/glyphicons.css';?>" type="text/css" />
+  <link rel="stylesheet" href="<?php echo base_url().'assets/animate.css/animate.min.css'?>" type="text/css" />
+  <link rel="stylesheet" href="<?php echo base_url().'assets/glyphicons/glyphicons.css'?>" type="text/css" />
   <link rel="stylesheet" href="<?php echo base_url().'assets/font-awesome/css/font-awesome.min.css'?>" type="text/css" />
   <link rel="stylesheet" href="<?php echo base_url().'assets/material-design-icons/material-design-icons.css'?>" type="text/css" />
 
   <link rel="stylesheet" href="<?php echo base_url().'assets/bootstrap/dist/css/bootstrap.min.css'?>" type="text/css" />
-  <!-- build:css ./assets/styles/app.min.css -->
+  <!-- build:css ../assets/styles/app.min.css -->
   <link rel="stylesheet" href="<?php echo base_url().'assets/styles/app.css'?>" type="text/css" />
   <!-- endbuild -->
   <link rel="stylesheet" href="<?php echo base_url().'assets/styles/font.css'?>" type="text/css" />
+  <style>
+        .form-file {
+            display: flex;
+            align-items: center;
+        }
+        .form-file input[type="file"] {
+            display: none;
+        }
+        .form-file a {
+            margin-right: 10px;
+            text-decoration: none;
+            color: #000;
+        }
+        .form-file img {
+            width: 110px; /* Set the desired width */
+            height: 110px; /* Set the desired height */
+            margin-right: 10px;
+            display: none; /* Hide the image initially */
+        }
+    </style>
 </head>
 <body>
-  <div class="app" id="app">
+ 
 
 <!-- ############ LAYOUT START-->
 
   <!-- aside -->
- <?php
- include('sidebar.php');
+ <?php 
+ include "sidebar.php";
  ?>
       <div class="b-t">
         <div class="nav-fold">
@@ -71,20 +91,21 @@
             <div class="collapse navbar-collapse" id="collapse">
               <!-- link and dropdown -->
               <ul class="nav navbar-nav mr-auto">
-                <!-- <li class="nav-item dropdown">
-                  <a class="nav-link" href data-toggle="dropdown">
-                    <i class="fa fa-fw fa-plus text-muted"></i>
-                    <span>New</span>
+                <li class="nav-item dropdown">
+                  <a class="nav-link" href="<?php echo base_url().'Admin/dashboard'?>">
+                    <i class="fa fa-fw fa-arrow-left text-muted"></i>
+                    <span>Add</span>
                   </a>
                   <div ui-include="<?php echo base_url().'assets/views/blocks/dropdown.new.html'?>"></div>
-                </li> -->
-                <h4>Edit</h4>
+                </li>
               </ul>
         
               <div ui-include="<?php echo base_url().'assets/views/blocks/navbar.form.html'?>"></div>
               <!-- / -->
             </div>
-           
+            <!-- / navbar collapse -->
+        
+            <!-- navbar right -->
             <ul class="nav navbar-nav ml-auto flex-row">
               <li class="nav-item dropdown pos-stc-xs">
                 <a class="nav-link mr-2" href data-toggle="dropdown">
@@ -96,7 +117,7 @@
               <li class="nav-item dropdown">
                 <a class="nav-link p-0 clear" href="#" data-toggle="dropdown">
                   <span class="avatar w-32">
-                    <img src="<?php echo base_url().'assets/assets/images/a0.jpg'?>" alt="...">
+                    <img src="<?php echo base_url().'assets/images/a0.jpg'?>" alt="...">
                     <i class="on b-white bottom"></i>
                   </span>
                 </a>
@@ -116,68 +137,134 @@
         <div class="pull-right text-muted py-1">
           &copy; Copyright <strong>Flatkit</strong> <span class="hidden-xs-down">- Built with Love v1.1.3</span>
           <a ui-scroll-to="content"><i class="fa fa-long-arrow-up p-x-sm"></i></a>
-        </div>       
+        </div>
+       
       </div>
     </div>
     <div ui-view class="app-body" id="view">
 
 <!-- ############ PAGE START-->
 <div class="padding">
-  <div class="row">
-    <div class="col-md-6">
-      <div class="box">
-        <div class="box-header">
-          <h2>Carousel</h2>
-          <!-- <small>Individual form controls receive some global styling. All textual &lt;input>, &lt;textarea>, and &lt;select> elements with .form-control are set to width: 100%; by default. Wrap labels and controls in .form-group for optimum spacing.</small> -->
-        </div>
-        <div class="box-divider m-0"></div>
-        <div class="box-body">
-        <span id="solmsg" class="text-success"></span><br>
-          <form id="editcarousal" role="form" class="mt-2" method="post" enctype="multipart/form-data">
-            <div class="form-group">
-              <label for="exampleInputEmail1">Enter title 1</label>
-              <input type="text" class="form-control" value="<?php echo $result->maintitle;?>" placeholder="Enter title 1" id="title" name="title">
-              <input type="hidden" class="form-control" id="id" name="id" value="<?php echo $result->id;?>" placeholder="Enter Menu Name" required>
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Enter title 2</label>
-              <input type="text" class="form-control" value="<?php echo $result->subtitle;?>" placeholder="Enter title 2" id="title2" name="title2">
-            </div>
-          
-            <label for="status" class="form-label">Status:</label>   
-               <select class="form-control" placeholder="Select Status" name="status" id="status"  data-bs-original-title="" title="" required>
-                <option value=''>Select Status</option>
-                <option value="1"  <?php if ($result->active=='1'){?> selected <?php }?>>Active </option>
-                <option value="0"  <?php if ($result->active=='0'){?> selected <?php }?>>Inactive </option></select>                                                           
-             
-                <img class="mt-3" src="<?php echo base_url().'uploads/carousel/'.$result->picture;?>" width="100" height="100" />
-            <div class="form-group mt-2">
-              <label for="exampleInputFile">File input</label>
-              <input type="file"  class="form-control" id="image1" name="image1">
-              
-            </div>
-          
-            <button type="submit" class="btn btn-success m-b"  id="uploadsub" name="subbtn">Submit</button>
-          </form>
-        </div>
+  <h6>Blogs</h6>
+  <p>
+  Fill out the required details.
+  </p>
+  <span id="solmsg" class="text-success"></span><br>
+  <form id="addblog" role="form" class="mt-2" method="post" enctype="multipart/form-data">
+  <div class="p-x-xs">
+    <div class="form-group row">
+      <label class="col-sm-2 form-control-label">Blog Title</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control rounded" name='title' required>
+      </div>
+    </div>
+
+    <!--div class="form-group row">
+      <label class="col-sm-2 form-control-label">Price Starts from</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control rounded">
+      </div>
+    </div-->
+    <div class="form-group row">
+      <label class="col-sm-2 form-control-label">Blog Short Descripition</label>
+      <div class="col-sm-6">
+        <textarea class="form-control" rows="5" name='shortdesc' id='shortdesc' required ></textarea>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-2 form-control-label">Blog Long Descripition</label>
+      <div class="col-sm-6">
+        <textarea class="form-control" rows="5" name='longdesc' id='longdesc' required ></textarea>
       </div>
     </div>
     
+    <!--div class="form-group row">
+      <label class="col-sm-2 form-control-label" for="input-id-1">No of Bed room</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control rounded" id="input-id-1">
+      </div>
+    </div>
     
-  </div>
+    <div class="form-group row">
+      <label class="col-sm-2 form-control-label">No of Bathroom</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control rounded">
+      </div>
+    </div>
+    
+    <div class="form-group row">
+      <label class="col-sm-2 form-control-label">Square foot</label>
+      <div class="col-sm-6">
+        <input type="text"  class="form-control rounded" placeholder="">
+      </div>
+    </div>
+    
+    <div class="form-group row">
+      <label class="col-sm-2 form-control-label">Project Status</label>
+      <div class="col-sm-6">
+       <select class="form-control rounded" id="actionSelect">
+            <option value="">select</option>
+            <option value="1">Ongoing </option>
+            <option value="2">Completed</option>           
+        </select>      
+        </div>      
+        </div-->
+
+        <div class="form-group row">
+      <label class="col-sm-2 form-control-label">Blog Status</label>
+      <div class="col-sm-6">
+       <select class="form-control rounded" id="actionSelect">
+            <option value="">Select</option>
+            <option value="1">Active </option>
+            <option value="2">Not Active</option>           
+        </select>        
+        </div>      
+        </div>
+        
+                 
+     
+        <div class="form-group row">
+        <label class="col-sm-2 form-control-label">File input</label>
+      
+        <div class="col-sm-6">
+        <input type="file"  class="form-control" id="image1" name="image1">
+            <!--div class="form-file">
+                <img id="fileImage" alt="Selected Image">
+                
+                <input type="file"  class="form-control1" id="image11" name="image11">
+                <button class="btn btn-primary" onclick="document.getElementById('image1').click();">Select file ...</button>
+            </div-->
+        </div>
+    </div>
+
+    
+    
+    
+    <div class="form-group row m-t-lg">
+      <div class="col-sm-4 col-sm-offset-2">
+        
+        <button type="submit" class="btn btn-success">Save changes</button>
+      </div>
+    </div>
+  </form>
 </div>
 
 <!-- ############ PAGE END-->
 
     </div>
   </div>
- 
+  <!-- / -->
+
+
+  
+
+<!-- ############ LAYOUT END-->
 
   </div>
-  
 <!-- build:js scripts/app.html.js -->
 <!-- jQuery -->
-<script src="<?php echo base_url().'assets/libs/jquery/jquery/dist/jquery.js'?>"></script>
+  <script src="<?php echo base_url().'assets/libs/jquery/jquery/dist/jquery.js'?>"></script>
 <!-- Bootstrap -->
   <script src="<?php echo base_url().'assets/libs/jquery/tether/dist/js/tether.min.js'?>"></script>
   <script src="<?php echo base_url().'assets/libs/jquery/bootstrap/dist/js/bootstrap.js'?>"></script>
@@ -198,34 +285,56 @@
   <script src="<?php echo base_url().'assets/scripts/ui-screenfull.js'?>"></script>
   <script src="<?php echo base_url().'assets/scripts/ui-scroll-to.js'?>"></script>
   <script src="<?php echo base_url().'assets/scripts/ui-toggle-class.js'?>"></script>
+
   <script src="<?php echo base_url().'assets/scripts/app.js'?>"></script>
+
   <!-- ajax -->
   <script src="<?php echo base_url().'assets/libs/jquery/jquery-pjax/jquery.pjax.js'?>"></script>
   <script src="<?php echo base_url().'assets/scripts/ajax.js'?>"></script>
-<!-- endbuild -->
- 
+
+  <script>
+        document.getElementById('image1').addEventListener('change', function() {
+            var file = this.files[0];
+            var fileName = file ? file.name : 'No file selected';
+            document.getElementById('image1').textContent = fileName;
+            document.getElementById('image1').href = URL.createObjectURL(file);
+            
+            if (file && file.type.startsWith('image/')) {
+                var img = document.getElementById('image1');
+                img.src = URL.createObjectURL(file);
+                img.style.display = 'block';
+            } else {
+                document.getElementById('image1').style.display = 'none';
+            }
+        });
+    </script>
+
+
+
 <script>
-$('#editcarousal').on('submit', function (e) {
+$('#addblog').on('submit', function (e) {
     e.preventDefault();
-  //  alert("add");
+    // alert("add");
        var file_data1 = $('#image1').prop('files')[0];
        
-        
-        var status=$("#status").val();
-       
         var title=$('#title').val();
-        var title2=$('#title2').val();
-        var id=$("#id").val();
+        var status=$("#status").val();                
+        var longdesc=$('#longdesc').val();
+        var shortdesc=$('#shortdesc').val();
+       
         var form_data = new FormData();
         form_data.append('image1', file_data1);
-        form_data.append('title2',title2);
-        form_data.append('maintitle',title);
-         form_data.append('id',id);
-        form_data.append('status',status);
+        form_data.append('shortdesc',shortdesc);
+       
+      
+        form_data.append('longdesc',longdesc);
         // form_data.append('showinfront',showinfront);
+        form_data.append('status',status);
+      
+      
        
         $.ajax({
-            url: "<?php echo base_url().'Admin/editcarousalprocess';?>", // point to server-side controller method
+            url: "<?php echo base_url().'Admin/addblogprocess';?>", // point to server-side controller method
             dataType: 'text', // what to expect back from the server
             cache: false,
             contentType: false,
@@ -234,17 +343,17 @@ $('#editcarousal').on('submit', function (e) {
             type: 'post',
             success: function (response) {
                 $('#image1').val('');
+                $('#shortdesc').val('');
+                $('#longdesc').val('');
                
                 $('input[type=text]').each(function() {
-        $(this).val('');
+                  $(this).val('');
     });
     
-                //$('#msg').html(response); // display success response from the server
-                window.location.href ="<?php echo base_url().'Admin/listcarousel';?>";
+                $('#solmsg').html(response); // display success response from the server
             },
             error: function (response) {
-                //$('#msg').html(response); // display error response from the server
-                window.location.href ="<?php echo base_url().'Admin/listcarousel';?>";
+                $('#solmsg').html(response); // display error response from the server
             }
         });
     });
@@ -255,5 +364,18 @@ $('#editcarousal').on('submit', function (e) {
 
 
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>

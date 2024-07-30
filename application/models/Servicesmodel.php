@@ -120,14 +120,14 @@ function get_countsub(){
 function get_enquiries($limit,$start){
     $this->db2->limit($limit,$start);
     $this->db2->select('*');
-    $this->db2->from('packageenquiries');
+    $this->db2->from('contactenquiries');
     $query = $this->db2->get();
     return $query->result_array(); 
 }
 
 function get_countenquiries(){
     $this->db2->select('*');
-    $this->db2->from('packageenquiries');
+    $this->db2->from('contactenquiries');
     $query = $this->db2->get();
     return $rowcount = $query->num_rows();
 }
@@ -194,7 +194,7 @@ function get_aboutusadmin(){
 
 function get_blog(){
     $this->db2->select('*');
-    $this->db2->from('blog');
+    $this->db2->from('blogcontents');
     $query = $this->db2->get();
     return $query->row();
     
@@ -202,11 +202,41 @@ function get_blog(){
 
 function get_blogcontents(){
     $this->db2->select('*');
-    $this->db2->from('blogcontents');
+    $this->db2->from('blog');
     $query = $this->db2->get();
     return $query->result_array();
 
 }
+
+public function get_home_story() {
+        $query = $this->db2->get('home_story');
+        return $query->result_array();
+    }
+
+    public function get_home_reason() {
+        $query = $this->db2->get('home_reason');
+        return $query->result_array();
+    }
+
+    public function get_home_ceo() {
+        $query = $this->db2->get('home_ceo');
+        return $query->result_array();
+    }
+
+    public function update_home_story($id, $data) {
+        $this->db->where('id', $id);
+        return $this->db2->update('home_story', $data);
+    }
+
+    public function update_home_reason($id, $data) {
+        $this->db->where('id', $id);
+        return $this->db2->update('home_reason', $data);
+    }
+
+    public function update_home_ceo($id, $data) {
+        $this->db->where('id', $id);
+        return $this->db2->update('home_ceo', $data);
+    }
 
 function get_blogcontentstop(){
 
@@ -873,17 +903,17 @@ function get_producttypeadmin($limit,$start){
 
 
 
-    function get_countproductimages(){
+    function get_countongoingprojects(){
         $this->db2->select('*');
-        $this->db2->from('productimages');
+        $this->db2->from('home_projects');
         $query = $this->db2->get();
         return $rowcount = $query->num_rows();
 
     }
-    function get_productimages($limit,$start){
+    function get_ongoingprojects($limit,$start){
         $this->db2->limit($limit,$start);
         $this->db2->select('*');
-        $this->db2->from('productimages');
+        $this->db2->from('home_projects');
         $query = $this->db2->get();
         return $query->result_array(); 
         }

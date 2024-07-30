@@ -1,9 +1,3 @@
-<?php
-require ('conn.php');
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -78,7 +72,7 @@ require ('conn.php');
               <!-- link and dropdown -->
               <ul class="nav navbar-nav mr-auto">
                 <li class="nav-item dropdown">
-                  <a class="nav-link" href="<?php echo base_url().'Admin/addcarousel'?>">
+                  <a class="nav-link" href="<?php echo base_url().'Admin/addproject'?>">
                     <i class="fa fa-fw fa-plus text-muted"></i>
                     <span>New</span>
                   </a>
@@ -137,7 +131,7 @@ require ('conn.php');
   
   <div class="box">
     <div class="box-header">
-      <h3>List carousel</h3>
+      <h3>List Ongoing Projects</h3>
     </div>
     <div class="row p-a">
      
@@ -152,36 +146,49 @@ require ('conn.php');
         <thead>
           <tr >
             <th>SL.No</th>
-            <th>Main heading</th>
-            <th>Sub title</th>
+            <th>Project Name</th>
+            <th>Price</th>
+            <th>Project description</th>
+            <th>No. of bedroom</th>
+            <th>No. of bathroom</th>
+            <th>Squarefeet</th>
+            <th>Images</th>
             <th>Status</th>
-            <th>Picture</th>
+            <th>Project_Status</th>
             <th>Action</th>
-          </tr>
+
+                      </tr>
         </thead>
         <tbody>
         <?php
         
-        foreach($result as $res){
+        foreach($result as $result){
           $i=1;
           $i
         ?>
-            <tr id="row<?php echo $res['id'] ?>">
+            <tr id="row<?php echo $result['id'] ?>">
             <td><?php echo $i;?></td>
-            <td><?php echo $res['maintitle'] ?></td>
-            <td><?php echo $res['subtitle'] ?></td>
-            <td><?php if ($res['active']==1){ echo "Active"; } else { echo "Inactive";}?></td>
+            <td><?php echo $result['project_name'] ?></td>
+            <td><?php echo $result['price'] ?></td>
+            <td><?php echo $result['project_descripition'] ?></td>
+            <td><?php echo $result['bedroom'] ?></td>
+            <td><?php echo $result['bathroom'] ?></td>
+            <td><?php echo $result['squarefeet'] ?></td>
+            
             <?php 
             $imgpath="carosel";
              ?>
             <td>
-            <img  style="height:8em; width:7em" src=<?php echo base_url().'uploads/carousel/'.$res['picture']?> >
+            <img  style="height:8em; width:7em" src=<?php echo base_url().'uploads/carousel/'.$result['picture']?> >
             </td>
-           <td>
-           <a href="<?php echo base_url().'admin/editcarousel/'.$res['id'];?>"><button class="btn btn-success" >
+           
+           <td><?php if ($result['status']==1){ echo "Active"; } else { echo "Inactive";}?></td>
+           <td><?php if ($result['project_status']==1){ echo "Completed"; } else { echo "Ongoing";}?></td>
+            <td>
+           <a href="<?php echo base_url().'admin/editcarousel/'.$result['id'];?>"><button class="btn btn-success" >
                 Edit
             </button></a> 
-            <button class="delete btn btn-danger"><a href="#" onclick="delrow(<?php echo $res['id'];?>)">
+            <button class="delete btn btn-danger"><a href="#" onclick="delrow(<?php echo $result['id'];?>)">
                 Delete
             </button>
             </td>

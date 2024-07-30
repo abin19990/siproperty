@@ -56,7 +56,7 @@
                       </a>
                     </li>
                     <li>
-                      <a href="#" >
+                      <a href="<?php echo base_url().'Admin/listongoingprojects'?>" >
                         <span class="nav-text">Ongoing Projects</span>
                       </a>
                     </li>
@@ -76,13 +76,18 @@
                       </a>
                     </li>
                     <li>
-                      <a href="#" >
+                      <a href="<?php echo base_url().'Admin/listblog'?>" >
                         <span class="nav-text">Blog</span>
                       </a>
                     </li>
                     <li>
-                      <a href="#" >
-                        <span class="nav-text">Subcribition</span>
+                      <a href="<?php echo base_url().'Admin/newslettersubscribers'?>" >
+                        <span class="nav-text">Subscription</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="<?php echo base_url().'Admin/listtestimonials'?>" >
+                        <span class="nav-text">Testimonial</span>
                       </a>
                     </li>
                   </ul>

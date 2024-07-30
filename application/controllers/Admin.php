@@ -82,6 +82,30 @@ class Admin extends CI_Controller {
 	}
 
 
+	function addblog(){
+		/*if( $this->session->has_userdata('username')) {					
+		}
+		else{
+		  redirect("welcome/services");
+		}*/
+		$this->load->model('Servicesmodel');
+		$this->db2->from('blogcontents');
+		$query = $this->db2->get();
+		$data['result']=$query->result_array();
+		/*$data['contactus']=$this->sm->get_contactus();
+		$data['newsletter']=$this->sm->get_newsletter();
+		$data['siteinf']=$this->sm->get_siteinf();*/
+		$this->load->view('Admin/addblog',$data);
+	
+	
+	}
+
+
+
+
+
+
+
 	function edittm(){
 		if( $this->session->has_userdata('username')) {					
 		}
@@ -1106,27 +1130,46 @@ public function subcategoryaddprocess(){
 
 
 public function listenquiries(){
-	if( $this->session->has_userdata('username')) {					
+	/*if( $this->session->has_userdata('username')) {					
 	}
 	else{
 	  redirect("welcome/services");
-	}
+	}*/
 $config = array();
-$config["base_url"] = base_url() . "Welcome/listenquiries";
+$config["base_url"] = base_url() . "admin/listenquiries";
 $config["total_rows"] = $this->sm->get_countenquiries();
 $config["per_page"] = 10;
 $config["uri_segment"] = 3;
+$config['full_tag_open'] = '<ul class="pagination">';
+$config['full_tag_close'] = '</ul>';
+$config['attributes'] = ['class' => 'page-link'];
+$config['first_link'] = false;
+$config['last_link'] = false;
+$config['first_tag_open'] = '<li class="page-item">';
+$config['first_tag_close'] = '</li>';
+$config['prev_link'] = '&laquo';
+$config['prev_tag_open'] = '<li class="page-item">';
+$config['prev_tag_close'] = '</li>';
+$config['next_link'] = '&raquo';
+$config['next_tag_open'] = '<li class="page-item">';
+$config['next_tag_close'] = '</li>';
+$config['last_tag_open'] = '<li class="page-item">';
+$config['last_tag_close'] = '</li>';
+$config['cur_tag_open'] = '<li class="page-item active"><a href="#" class="page-link">';
+$config['cur_tag_close'] = '<span class="sr-only">(current)</span></a></li>';
+$config['num_tag_open'] = '<li class="page-item">';
+$config['num_tag_close'] = '</li>';
 $this->pagination->initialize($config);
 $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 $data["links"] = $this->pagination->create_links();	
 $data['result']=$this->sm->get_enquiries($config["per_page"],$page);
-$this->db2->from('contactus');
+/*$this->db2->from('contactus');
     $query = $this->db2->get();
     $data['resultphone']=$query->row();
 	$data['contactus']=$this->sm->get_contactus();
 	$data['newsletter']=$this->sm->get_newsletter();
-	$data['siteinf']=$this->sm->get_siteinf();
-$this->load->view('services/listenquiries',$data);	
+	$data['siteinf']=$this->sm->get_siteinf();*/
+$this->load->view('admin/listenquiry',$data);	
 }
 
 
@@ -1151,7 +1194,7 @@ $this->db2->from('contactus');
 	$data['contactus']=$this->sm->get_contactus();
 	$data['newsletter']=$this->sm->get_newsletter();
 	$data['siteinf']=$this->sm->get_siteinf();
-$this->load->view('services/listpckenquiries',$data);	
+$this->load->view('admin/listenquiry',$data);	
 }
 
 
@@ -1212,7 +1255,7 @@ $this->load->view('services/listflightenquiries',$data);
 public function deleteenquiries(){
 	$id=$_GET['id'];
 	$this->db2->where('enquiryid',$id);
-	$this->db2->delete('packageenquiries');
+	$this->db2->delete('contactenquiries');
 	echo ($this->db2->affected_rows() != 1) ? 'Error in deleting Enquiries' : 'Enquiries deleted Successfully';
 }
 
@@ -1276,19 +1319,19 @@ function addservices(){
 }
 
 function addtestimonials(){
-	if( $this->session->has_userdata('username')) {					
+	/*if( $this->session->has_userdata('username')) {					
 	}
 	else{
 	  redirect("welcome/services");
-	}
+	}*/
 	$this->load->model('Servicesmodel');
 	$this->db2->from('testimonials');
     $query = $this->db2->get();
     $data['result']=$query->result_array(); 
-	$data['contactus']=$this->sm->get_contactus();
+	/*$data['contactus']=$this->sm->get_contactus();
 	$data['newsletter']=$this->sm->get_newsletter();
-	$data['siteinf']=$this->sm->get_siteinf();
-	$this->load->view('services/addtestimonials',$data);
+	$data['siteinf']=$this->sm->get_siteinf();*/
+	$this->load->view('Admin/addtestimonial',$data);
 
 
 }
@@ -3356,13 +3399,13 @@ $this->load->view('services/listblog',$data);
 public function listtestimonials(){
 
 
-	if( $this->session->has_userdata('username')) {					
+	/*if( $this->session->has_userdata('username')) {					
 	}
 	else{
 	  redirect("welcome/services");
-	}
+	}*/
 $config = array();
-$config["base_url"] = base_url() . "Welcome/listtestimonials";
+$config["base_url"] = base_url() . "Admin/listtestimonials";
 $config["total_rows"] = $this->sm->get_counttestimonials();
 $config["per_page"] = 10;
 $config["uri_segment"] = 3;
@@ -3370,13 +3413,13 @@ $this->pagination->initialize($config);
 $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 $data["links"] = $this->pagination->create_links();	
 $data['result']=$this->sm->get_testimonialsadmin($config["per_page"],$page);
-$this->db2->from('contactus');
+/*$this->db2->from('contactus');
     $query = $this->db2->get();
     $data['resultphone']=$query->row();
 	$data['contactus']=$this->sm->get_contactus();
 	$data['newsletter']=$this->sm->get_newsletter();
-	$data['siteinf']=$this->sm->get_siteinf();
-$this->load->view('services/listtestimonials',$data);
+	$data['siteinf']=$this->sm->get_siteinf();*/
+$this->load->view('admin/listtestimonial',$data);
 }
 
 
@@ -3496,19 +3539,22 @@ public function addtestimonialsprocess(){
 	$image1=$new_name;
 	$alttag1=$this->input->post('alttag1');
 
-	 $testtitle=$this->input->post('testtitle');
+	 $title=$this->input->post('title');
 	 $rating=$this->input->post('rating');
-	 $description=$this->input->post('description');
+	 $content=$this->input->post('content');
 	 $name=$this->input->post('name');
-	  $place=$this->input->post('place');
+	  $designation=$this->input->post('designation');
 	  $date=$this->input->post('date');
 	  $status=$this->input->post('status');
+	  $date=Date('Y-m-d');
 	 $data = array(
-		'title'=>"$testtitle",
-		 'testimonial' =>"$description",
-		 'rating' =>"$rating",
+		'title'=>"$title",
+		 'content' =>"$content",
+		 //'rating' =>"$rating",
 		 'name'=>"$name",
-		 'image'=>$image1,'place'=>$place,'date'=>$date,'alttagimg1'=>"$alttag1",'active'=>$status		
+		 'picture'=>$image1,'designation'=>$designation,'date'=>$date,
+		 //'alttagimg1'=>"$alttag1",
+		 'active'=>$status		
 	  );
 	  
 	  	  $this->db2->insert('testimonials', $data);
@@ -3519,7 +3565,7 @@ public function addtestimonialsprocess(){
 }
 
 
-public function deletetestimonials(){
+public function deletetestimonial(){
 	$id=$_GET['id'];
 	$this->db2->where('testimonialid',$id);
 	$this->db2->delete('testimonials');
@@ -3528,10 +3574,15 @@ public function deletetestimonials(){
 
 public function deleteblog(){
 	$id=$_GET['id'];
-	$this->db2->where('contentid',$id);
+	$this->db2->where('blogid',$id);
 	$this->db2->delete('blogcontents');
-	echo ($this->db2->affected_rows() != 1) ? 'Error in deleting Blog Contents' : 'Blog Contents deleted Successfully';
+	echo ($this->db2->affected_rows() != 1) ? 'Error in deleting Blog' : 'Blog deleted Successfully';
 }
+
+
+
+
+
 
 
 public function addb2logcontentsprocess(){
@@ -4418,18 +4469,37 @@ public function newsletter(){
 
 public function newslettersubscribers(){
 	$config = array();
-$config["base_url"] = base_url() . "Welcome/newslettersubscribers";
+$config["base_url"] = base_url() . "Admin/newslettersubscribers";
 $config["total_rows"] = $this->sm->get_countnewslettersubscribers();
 $config["per_page"] = 10;
 $config["uri_segment"] = 3;
+$config['full_tag_open'] = '<ul class="pagination">';
+$config['full_tag_close'] = '</ul>';
+$config['attributes'] = ['class' => 'page-link'];
+$config['first_link'] = false;
+$config['last_link'] = false;
+$config['first_tag_open'] = '<li class="page-item">';
+$config['first_tag_close'] = '</li>';
+$config['prev_link'] = '&laquo';
+$config['prev_tag_open'] = '<li class="page-item">';
+$config['prev_tag_close'] = '</li>';
+$config['next_link'] = '&raquo';
+$config['next_tag_open'] = '<li class="page-item">';
+$config['next_tag_close'] = '</li>';
+$config['last_tag_open'] = '<li class="page-item">';
+$config['last_tag_close'] = '</li>';
+$config['cur_tag_open'] = '<li class="page-item active"><a href="#" class="page-link">';
+$config['cur_tag_close'] = '<span class="sr-only">(current)</span></a></li>';
+$config['num_tag_open'] = '<li class="page-item">';
+$config['num_tag_close'] = '</li>';
 $this->pagination->initialize($config);
 $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 $data["links"] = $this->pagination->create_links();	
 	$data['result']=$this->sm->get_newslettersubscribersall($config["per_page"],$page);
-	$data['contactus']=$this->sm->get_contactus();
+	/*$data['contactus']=$this->sm->get_contactus();
 	$data['newsletter']=$this->sm->get_newsletter();
-	$data['siteinf']=$this->sm->get_siteinf();
-	$this->load->view('services/newslettersubscribers',$data);
+	$data['siteinf']=$this->sm->get_siteinf();*/
+	$this->load->view('admin/newslettersubscribers',$data);
 
 
 }
@@ -4853,21 +4923,21 @@ public function addcarousel(){
 
 public function editcarousel(){
 
-	if( $this->session->has_userdata('username')) {					
-	}
-	else{
-	  redirect("welcome/services");
-	}
+	// if( $this->session->has_userdata('username')) {					
+	// }
+	// else{
+	//   redirect("admin/services");
+	// }
 	$this->load->model('Servicesmodel');
 	$id=$this->uri->segment(3);
-	$this->db2->where('carouselid',$id);
-	$this->db2->from('carousel');
+	$this->db2->where('id',$id);
+	$this->db2->from('home_carosel');
     $query = $this->db2->get();
     $data['result']=$query->row(); 
-	$data['contactus']=$this->sm->get_contactus();
-	$data['newsletter']=$this->sm->get_newsletter();
-	$data['siteinf']=$this->sm->get_siteinf();
-	$this->load->view('services/editcarousel',$data);
+	// $data['contactus']=$this->sm->get_contactus();
+	// $data['newsletter']=$this->sm->get_newsletter();
+	// $data['siteinf']=$this->sm->get_siteinf();
+	$this->load->view('Admin/editcarousel',$data);
 
 
 
@@ -5165,26 +5235,70 @@ $id=$this->uri->segment(3);
 //$this->load->view('services/editfeatureupdate',$data);
 
 
+public function content() {
+	// $data['home_story'] = $this->Servicesmodel->get_home_story();
+	// $data['home_reason'] = $this->Servicesmodel->get_home_reason();
+	// $data['home_ceo'] = $this->Servicesmodel->get_home_ceo();
+	$this->load->view('admin/contents');
+}
 
-
-
-
-
-public function addproduct(){
-
-	if( $this->session->has_userdata('username')) {					
+public function updatecontents() {
+	if ($this->input->post('update_story')) {
+		$id = $this->input->post('id');
+		$data = array(
+			'title' => $this->input->post('title'),
+			'message' => $this->input->post('message')
+		);
+		$this->Servicesmodel->update_home_story($id, $data);
 	}
-	else{
-	  redirect("welcome/services");
+
+	if ($this->input->post('update_reason')) {
+		$id = $this->input->post('id');
+		$data = array(
+			'heading1' => $this->input->post('heading1'),
+			'subheading1' => $this->input->post('subheading1'),
+			'heading2' => $this->input->post('heading2'),
+			'subheading2' => $this->input->post('subheading2'),
+			'heading3' => $this->input->post('heading3'),
+			'subheading3' => $this->input->post('subheading3')
+		);
+		$this->Servicesmodel->update_home_reason($id, $data);
 	}
+
+	if ($this->input->post('update_ceo')) {
+		$id = $this->input->post('id');
+		$data = array(
+			'ceo_name' => $this->input->post('ceo_name'),
+			'ceo_designation' => $this->input->post('ceo_designation'),
+			'ceo_comment' => $this->input->post('ceo_comment'),
+			'ceo_profile_picture' => $this->input->post('ceo_profile_picture'),
+			'about_video' => $this->input->post('about_video')
+		);
+		$this->Servicesmodel->update_home_ceo($id, $data);
+	}
+
+}
+
+
+
+
+
+
+public function addproject(){
+
+	// if( $this->session->has_userdata('username')) {					
+	// }
+	// else{
+	//   redirect("welcome/services");
+	// }
 	$this->load->model('Servicesmodel');
-	$this->db2->from('producttype');
+	$this->db2->from('home_projects');
     $query = $this->db2->get();
-    $data['result']=$query->result_array(); 
-	$data['contactus']=$this->sm->get_contactus();
-	$data['newsletter']=$this->sm->get_newsletter();
-	$data['siteinf']=$this->sm->get_siteinf();
-	$this->load->view('services/addproduct',$data);
+    // $data['result']=$query->result_array(); 
+	// $data['contactus']=$this->sm->get_contactus();
+	// $data['newsletter']=$this->sm->get_newsletter();
+	// $data['siteinf']=$this->sm->get_siteinf();
+	$this->load->view('Admin/addproject');
 
 
 
@@ -5542,6 +5656,18 @@ public function deletecarousel(){
 
 
 }
+
+public function deletesubscribers(){
+	$id=$_GET['id'];
+	$this->db2->where('newsletterid',$id);
+	$this->db2->delete('newslettersubscribe');
+	echo ($this->db2->affected_rows() != 1) ? 'Error in deleting Subscribers' : 'Subscribers deleted Successfully';
+
+
+}
+
+
+
 
 
 public function deletesteps(){
@@ -6600,6 +6726,89 @@ public function addprdspec(){
 
 }
 
+public function addblogprocess(){
+
+	$ext=pathinfo($_FILES["image1"]["name"], PATHINFO_EXTENSION);
+	$new_name = time().'blog'.'.'.$ext;
+	$config['file_name'] = $new_name;
+
+	//$file_name=$_FILES['image1']['name'];
+	//$new_name = time().$file_name;
+	$config['file_name'] = $new_name;
+	$config['upload_path'] = 'uploads/blog';
+	$config['allowed_types'] = 'gif|jpg|png|jpeg';	
+	$config['max_size'] = '1024'; //1 MB
+	$this->load->library('upload', $config);
+	$this->upload->initialize($config);
+	if (isset($_FILES['image1']['name'])) {
+		if (0 < $_FILES['image1']['error']) {
+			echo 'Error during file upload' . $_FILES['image1']['error'];
+		} else {
+			if (file_exists('uploads/blog' . $_FILES['image1']['name'])) {
+				echo 'File already exists : uploads/blog' . $_FILES['image1']['name'];
+			} else {
+				
+				if (!$this->upload->do_upload('image1')) {
+					//echo $this->upload->display_errors();
+				} else {
+					//echo 'File successfully uploaded : uploads/' . $_FILES['file']['name'];
+				}
+			}
+		}
+	} else {
+		echo 'Please choose a file';
+	}
+
+	//$image1=$_FILES['image1']['name'];
+	//$image2=$_FILES['image2']['name'];
+	$image1=$new_name;
+
+
+	 $title=$this->input->post('title');
+
+	 $shortdesc=$this->input->post('shortdesc');
+	$longdesc=$this->input->post('longdesc');
+	//  $title4=$this->input->post('title4');
+	//$link=$this->input->post('link');
+	 //$description=$this->input->post('description');
+	//  $alttag1=$this->input->post('alttag1');
+	 $status=$this->input->post('status');
+	//  $showinfront=$this->input->post('showinfront');
+	  
+	 $data = array(
+		 //'description' =>"$description",
+		//  'showinfront'=>"$showinfront",
+		 'blogtitle'=>"$title",
+		 'blogshortdesc'=>"$shortdesc",
+		 'bloglongdesc'=>"$longdesc",
+		//  'title4'=>"$title4",
+		 'picture'=>$image1,
+		//  'alttagimg1'=>"$alttag1",
+		'active'=>"$status"		
+	  );
+	  //print_r($data);
+	  $id=$this->uri->segment(3); 
+	  //$this->db2->where('testimonialid',$id);
+	   //$this->db2->update('testimonials', $data);
+	   //$this->db2->insert('problems', $data);
+	   
+	   $this->db2->insert('blogcontents', $data);
+	  echo ($this->db2->affected_rows() != 1) ? 'Error in Adding Blog' : '<b>Blog Added Successfully</b>';
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -6684,9 +6893,9 @@ public function editcarousalprocess(){
 
 
 	$id=$this->input->post('id');
-	$this->db2->where('carouselid',$id);
+	$this->db2->where('id',$id);
 	$this->db2->select('*');
-    $this->db2->from('carousel');
+    $this->db2->from('home_carosel');
     $query = $this->db2->get();
    $imgdetails=$query->row();
    $image11=$imgdetails->picture;
@@ -6740,19 +6949,20 @@ public function editcarousalprocess(){
 	 $showinfront=$this->input->post('showinfront');
 	  
 	 $data = array(
-		 //'description' =>"$description",
-		 'showinfront'=>"$showinfront",
-		 'title'=>"$title",
-		 'title2'=>"$title2",
-		 'title3'=>"$title3",
-		 'title4'=>"$title4",
-		 'picture'=>$image1,
-		 'alttagimg1'=>"$alttag1",'active'=>"$status"		
-	  );
+		//'description' =>"$description",
+	   //  'showinfront'=>"$showinfront",
+		'maintitle'=>"$title",
+		'subtitle'=>"$title2",
+	   //  'title3'=>"$title3",
+	   //  'title4'=>"$title4",
+		'picture'=>$image1,
+	   //  'alttagimg1'=>"$alttag1",
+	   'active'=>"$status"		
+	 );
 	  //print_r($data);
 	  $id=$this->input->post('id'); 
-	  $this->db2->where('carouselid',$id);
-	  $this->db2->update('carousel', $data);
+	  $this->db2->where('id',$id);
+	  $this->db2->update('home_carosel', $data);
 	   //$this->db2->insert('problems', $data);
 	   
 	   //$this->db2->insert('carousel', $data);
@@ -8394,32 +8604,65 @@ public function listcarousel(){
 }
 
 
-
-public function listproductimages(){
+public function listblog(){
 	if( $this->session->has_userdata('username')) {					
 	}
 	else{
-	  redirect("welcome/services");
+	//   redirect("admin/login");
 	}
 	$this->load->model('Servicesmodel');
 	$config = array();
-	$config["base_url"] = base_url() . "Welcome/listproductimages";
+	$config["base_url"] = base_url() . "Admin/listblog";
 	//$config["total_rows"] = $this->sm->get_countsolutions();
-	$config["total_rows"]=$this->sm->get_countproductimages();
+	$config["total_rows"]=$this->sm->get_countblog();
 	$config["per_page"] = 10;
 	$config["uri_segment"] = 3;
 	$this->pagination->initialize($config);
 	$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 	$data["links"] = $this->pagination->create_links();
-	$data['result']=$this->sm->get_productimages($config["per_page"], $page);	
+	$data['result1']=$this->sm->get_blogadmin($config["per_page"], $page);
+	//print_r($data['result']);
+	//die;	
 	//$data['result']=$this->sm->get_solutions($config["per_page"], $page);
 	//$this->db2->from('problems');
     //$query = $this->db2->get();
     //$data['resultphone']=$query->row();
-	$data['contactus']=$this->sm->get_contactus();
-	$data['newsletter']=$this->sm->get_newsletter();
-	$data['siteinf']=$this->sm->get_siteinf();	
-	$this->load->view('services/listproductimages',$data);
+	// $data['contactus']=$this->sm->get_contactus();
+	// $data['newsletter']=$this->sm->get_newsletter();
+	// $data['siteinf']=$this->sm->get_siteinf();	
+	$this->load->view('admin/listblog',$data);
+}
+
+
+
+
+
+
+public function listongoingprojects(){
+	// if( $this->session->has_userdata('username')) {					
+	// }
+	// else{
+	//   redirect("welcome/services");
+	// }
+	$this->load->model('Servicesmodel');
+	$config = array();
+	$config["base_url"] = base_url() . "/Admin/listongoingprojects";
+	//$config["total_rows"] = $this->sm->get_countsolutions();
+	$config["total_rows"]=$this->sm->get_countongoingprojects();
+	$config["per_page"] = 10;
+	$config["uri_segment"] = 3;
+	$this->pagination->initialize($config);
+	$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+	$data["links"] = $this->pagination->create_links();
+	$data['result']=$this->sm->get_ongoingprojects($config["per_page"], $page);	
+	//$data['result']=$this->sm->get_solutions($config["per_page"], $page);
+	//$this->db2->from('problems');
+    //$query = $this->db2->get();
+    //$data['resultphone']=$query->row();
+	// $data['contactus']=$this->sm->get_contactus();
+	// $data['newsletter']=$this->sm->get_newsletter();
+	// $data['siteinf']=$this->sm->get_siteinf();	
+	$this->load->view('Admin/projectslist',$data);
 }
 
 

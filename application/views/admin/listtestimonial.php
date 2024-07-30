@@ -137,7 +137,7 @@ require ('conn.php');
   
   <div class="box">
     <div class="box-header">
-      <h3>List carousel</h3>
+      <h3>List Testimonial</h3>
     </div>
     <div class="row p-a">
      
@@ -152,8 +152,9 @@ require ('conn.php');
         <thead>
           <tr >
             <th>SL.No</th>
-            <th>Main heading</th>
-            <th>Sub title</th>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Name</th>
             <th>Status</th>
             <th>Picture</th>
             <th>Action</th>
@@ -161,32 +162,33 @@ require ('conn.php');
         </thead>
         <tbody>
         <?php
-        
+         $i=1;
         foreach($result as $res){
-          $i=1;
-          $i
+         
+         
         ?>
-            <tr id="row<?php echo $res['id'] ?>">
+            <tr id="row<?php echo $res['testimonialid'] ?>">
             <td><?php echo $i;?></td>
-            <td><?php echo $res['maintitle'] ?></td>
-            <td><?php echo $res['subtitle'] ?></td>
+            <td><?php echo $res['title'] ?></td>
+            <td><?php echo $res['content'] ?></td><td><?php echo $res['name'] ?></td>
             <td><?php if ($res['active']==1){ echo "Active"; } else { echo "Inactive";}?></td>
             <?php 
             $imgpath="carosel";
              ?>
             <td>
-            <img  style="height:8em; width:7em" src=<?php echo base_url().'uploads/carousel/'.$res['picture']?> >
+            <img  style="height:8em; width:7em" src=<?php echo base_url().'uploads/testimonial/'.$res['picture']?> >
             </td>
            <td>
-           <a href="<?php echo base_url().'admin/editcarousel/'.$res['id'];?>"><button class="btn btn-success" >
+           <a href="<?php echo base_url().'admin/edittestimonial/'.$res['testimonialid'];?>"><button class="btn btn-success" >
                 Edit
             </button></a> 
-            <button class="delete btn btn-danger"><a href="#" onclick="delrow(<?php echo $res['id'];?>)">
+            <button class="delete btn btn-danger"><a href="#" onclick="delrow(<?php echo $res['testimonialid'];?>)">
                 Delete
             </button>
             </td>
           </tr>          
         <?php
+         $i++;
         }
         ?>      
                            
@@ -217,7 +219,7 @@ require ('conn.php');
     function delrow(id){
 $.ajax({
             type: 'GET',
-            url: "<?php echo base_url().'Admin/deletecarousel';?>",
+            url: "<?php echo base_url().'Admin/deletetestimonial';?>",
             data:{id:id},
             success:function(data){
                 $("#row"+id).remove();

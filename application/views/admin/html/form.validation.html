@@ -27,6 +27,37 @@
   <link rel="stylesheet" href="../assets/styles/app.css" type="text/css" />
   <!-- endbuild -->
   <link rel="stylesheet" href="../assets/styles/font.css" type="text/css" />
+  <style>
+    .form-file {
+        display: flex;
+        align-items: center;
+    }
+    .form-file input[type="file"] {
+        display: none;
+    }
+    .form-file a {
+        margin-right: 10px;
+        text-decoration: none;
+        color: #000;
+    }
+    
+    .form-file img {
+        width: 100px; /* Set the desired width */
+        height: 100px; /* Set the desired height */
+        margin-right: 8px;
+        display: none; /* Hide the image initially */
+    }
+    .form-file button {
+    white-space: nowrap;
+    
+}
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>
+
 </head>
 <body>
   <div class="app" id="app">
@@ -601,41 +632,23 @@
       <form ui-jp="parsley">
         <div class="box">
           <div class="box-header">
-            <h2>Register</h2>
+            <h2>Our Story</h2>
           </div>
           <div class="box-body">
-            <p class="text-muted">Please fill the information to continue</p>
+           
             <div class="form-group">
-              <label>Username</label>
+              <label>Title</label>
               <input type="text" class="form-control" required>                        
             </div>
-            <div class="form-group">
-              <label>Email</label>
-              <input type="email" class="form-control" required>                        
+            <div class="form-group" style="height: 200px;">
+              <label>Message</label>
+              <textarea class="form-control" rows="6" data-minwords="6" required placeholder="Type your message"></textarea>
             </div>
-            <div class="row m-b">
-              <div class="col-sm-6">
-                <label>Enter password</label>
-                <input type="password" class="form-control" required id="pwd">   
-              </div>
-              <div class="col-sm-6">
-                <label>Confirm password</label>
-                <input type="password" class="form-control" data-parsley-equalto="#pwd" required>      
-              </div>   
-            </div>
-            <div class="form-group">
-              <label>Phone</label>
-              <input type="number" class="form-control" placeholder="XXX XXXX XXX" required>
-            </div>
-            <div class="checkbox">
-              <label class="ui-check">
-                <input type="checkbox" name="check" checked required="true"><i></i> I agree to the <a href="#" class="text-info">Terms of Service</a>
-              </label>
-            </div>
+                        
           </div>
-          <div class="dker p-a text-right">
+          <!-- <div class="dker p-a text-right">
             <button type="submit" class="btn info">Submit</button>
-          </div>
+          </div> -->
         </div>
       </form>
     </div>
@@ -643,32 +656,41 @@
       <form ui-jp="parsley">
         <div class="box">
           <div class="box-header">
-            <h2>Contact</h2>
+            <h2>Section</h2>
           </div>
           <div class="box-body">
-            <p class="text-muted">Need support? please fill the fields below.</p>                        
+                                
               <div class="row m-b">
                 <div class="col-sm-6">
-                  <label>Your name</label>
-                  <input type="text" class="form-control" placeholder="Name" required>
+                  <label>Title 1</label>
+                  <input type="text" class="form-control" placeholder="enter your title 1" required>
                 </div>
                 <div class="col-sm-6">
-                  <label>Email</label>
-                  <input type="email" class="form-control" placeholder="Enter email" required>
+                  <label>Title 2</label>
+                  <input type="text" class="form-control" placeholder="enter your title 2" required>
                 </div>
               </div>
               <div class="form-group">
-                <label>Your website</label>
+                <label>Url 1</label>
                 <input type="url" required class="form-control" placeholder="Your website url">
               </div>
               <div class="form-group">
-                <label>Message</label>
-                <textarea class="form-control" rows="6" data-minwords="6" required placeholder="Type your message"></textarea>
+                <label>Url 2</label>
+                <input type="url" required class="form-control" placeholder="Your website url">
               </div>
+              <div class="form-group row">
+                <label class="col-sm-2 form-control-label">File input</label>
+                <div class="col-sm-6">
+                    <div class="form-file">
+                        <img id="fileImage" alt="">
+                        <a href="#" id="fileName"></a>
+                        <input type="file" id="fileInput">
+                        <button class="btn btn-primary" onclick="document.getElementById('fileInput').click();">Select file ...</button>
+                    </div>
+                </div>
+            </div>
           </div>
-          <div class="dker p-a text-right">
-            <button type="submit" class="btn info">Submit</button>
-          </div>
+         
         </div>
       </form>
     </div>
@@ -678,78 +700,49 @@
       <form ui-jp="parsley">
         <div class="box">
           <div class="box-header">
-            <h2>Basic constraints</h2>
+            <h2>Reason to Choose </h2>
           </div>
           <div class="box-body">                    
             <div class="form-group row">
-              <label class="col-sm-3 form-control-label">Required</label>
+              <label class="col-sm-3 form-control-label">Heading 1</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" required placeholder="required field">
-                <select required class="form-control c-select m-y">
-                    <option value="">Please choose</option>
-                    <option value="foo">Foo</option>
-                    <option value="bar">Bar</option>
-                </select>
-                <div class="checkbox">
-                  <label class="checkbox ui-check">
-                    <input type="checkbox" name="inlineCheckbox1" value="option1" required data-parsley-error-message="You must agree to the site policy."><i></i> Agree to the policy
-                  </label>
-                </div>
+                <input type="text" class="form-control" required placeholder="">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 form-control-label">Sub heading</label>
+              <div class="col-sm-9">
+              <textarea class="form-control" rows="6" data-minwords="6" required placeholder="Type your message"></textarea>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 form-control-label">Heading 2</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" required placeholder="">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 form-control-label">Sub heading</label>
+              <div class="col-sm-9">
+              <textarea class="form-control" rows="6" data-minwords="6" required placeholder="Type your message"></textarea>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-sm-3 form-control-label">Heading 3</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" required placeholder="">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 form-control-label">Sub heading</label>
+              <div class="col-sm-9">
+              <textarea class="form-control" rows="6" data-minwords="6" required placeholder="Type your message"></textarea>
               </div>
             </div>
             
-            <div class="form-group row">
-              <label class="col-sm-3 form-control-label">Min Length</label>
-              <div class="col-sm-9">
-                <input type="text" minlength="6" class="form-control" placeholder="minlength = 6">
-              </div>
-            </div>
-            
-            <div class="form-group row">
-              <label class="col-sm-3 form-control-label">Max Length</label>
-              <div class="col-sm-9">
-                <input type="text" maxlength="6" class="form-control" placeholder="maxlength = 6">
-              </div>
-            </div>
-            
-            <div class="form-group row">
-              <label class="col-sm-3 form-control-label">Range Length</label>
-              <div class="col-sm-9">
-                <input type="text" data-parsley-length="[6, 10]" class="form-control" placeholder="data-rangelength = [5,10]">
-              </div>
-            </div>
-            
-            <div class="form-group row">
-              <label class="col-sm-3 form-control-label">Min</label>
-              <div class="col-sm-9">
-                <input type="text" min="6" class="form-control" placeholder="min = 6">
-              </div>
-            </div>
-            
-            <div class="form-group row">
-              <label class="col-sm-3 form-control-label">Max</label>
-              <div class="col-sm-9">
-                <input type="text" max="100" class="form-control" placeholder="max = 100">
-              </div>
-            </div>
-            
-            <div class="form-group row">
-              <label class="col-sm-3 form-control-label">Range</label>
-              <div class="col-sm-9">
-                <input type="text" data-parsley-range="[6, 10]" class="form-control" placeholder="data-range = [6, 10]">
-              </div>
-            </div>
-            
-            <div class="form-group row">
-              <label class="col-sm-3 form-control-label">Pattern</label>
-              <div class="col-sm-9">
-                <input type="text" pattern="#[A-Fa-f0-9]{6}" class="form-control" placeholder="hexa color code">
-              </div>
-            </div>
           </div>
-          <div class="dker p-a text-right">
-            <button type="submit" class="btn info">Submit</button>
-          </div>
+          
         </div>
       </form>
     </div>
@@ -757,69 +750,60 @@
       <form ui-jp="parsley">
         <div class="box">
           <div class="box-header">
-            <h2>Type constraints</h2>
+            <h2>About</h2>
           </div>
           <div class="box-body">                    
             <div class="form-group row">
-              <label class="col-sm-3 form-control-label">Email</label>
+              <label class="col-sm-3 form-control-label">Ceo name</label>
               <div class="col-sm-9">
-                <input type="email" class="form-control" required placeholder="email">    
+                <input type="text" class="form-control" required placeholder="email">    
               </div>
             </div>
             
             <div class="form-group row">
-              <label class="col-sm-3 form-control-label">Url</label>
+              <label class="col-sm-3 form-control-label">Ceo designation</label>
               <div class="col-sm-9">
-                <input type="url" class="form-control" placeholder="url">
+                <input type="text" class="form-control" required placeholder="email">    
               </div>
             </div>
-            
             <div class="form-group row">
-              <label class="col-sm-3 form-control-label">Integer</label>
+              <label class="col-sm-3 form-control-label">Ceo Comment</label>
               <div class="col-sm-9">
-                <input type="text" data-parsley-type="integer" class="form-control" placeholder="Integer">
+              <textarea class="form-control" rows="6" data-minwords="6" required placeholder="Type your message"></textarea>
               </div>
             </div>
-            
             <div class="form-group row">
-              <label class="col-sm-3 form-control-label">Digits</label>
-              <div class="col-sm-9">
-                <input type="text" data-parsley-type="digits" class="form-control" placeholder="digits">
+              <label class="col-sm-3 form-control-label">Ceo profile Picture </label>
+              <div class="col-sm-6">
+                  <div class="form-file d-flex align-items-center">
+                      <img id="fileImage1" alt="">
+                      <a href="#" id="fileName1"></a>
+                      <input type="file" id="fileInput1" accept="image/*" style="display: none;">
+                      <button class="btn btn-primary ml-auto" onclick="document.getElementById('fileInput1').click();">Select file ...</button>
+                  </div>
               </div>
-            </div>
-            
-            <div class="form-group row">
-              <label class="col-sm-3 form-control-label">Number</label>
-              <div class="col-sm-9">
-                <input type="text" data-parsley-type="number" class="form-control" placeholder="number">
-              </div>
-            </div>
-            
-            <div class="form-group row">
-              <label class="col-sm-3 form-control-label">Alphanum</label>
-              <div class="col-sm-9">
-                <input type="text" data-parsley-type="alphanum" class="form-control" placeholder="alphanumeric string">
-              </div>
-            </div>
-            
-            <div class="form-group row">
-              <label class="col-sm-3 form-control-label">Equal To</label>
-              <div class="col-sm-9">
-                <div class="row">
-                  <div class="col-sm-6"><input type="text" value="foo" id="foo" class="form-control"></div>
-                  <div class="col-sm-6"><input type="text" data-parsley-equalto="#foo" placeholder="equal to foo" class="form-control"></div>
-                </div>                            
-              </div>
-            </div>
           </div>
-          <div class="dker p-a text-right">
-            <button type="submit" class="btn info">Submit</button>
+          <div class="form-group row">
+              <label class="col-sm-3 form-control-label">About Video </label>
+              <div class="col-sm-6">
+                  <div class="form-file d-flex align-items-center">
+                      <video id="fileVideo2" controls style="display: none; max-width: 100px; max-height: 100px;"></video>
+                      <a href="#" id="fileName2"></a>
+                      <input type="file" id="fileInput2" accept="video/*" style="display: none;">
+                      <button class="btn btn-primary ml-auto" onclick="document.getElementById('fileInput2').click();">Select file ...</button>
+                  </div>
+              </div>
           </div>
+          
         </div>
+        
       </form>
     </div>
   </div>
-
+  <div class="center-container col-md-12">
+    <button type="submit" class="btn btn-success col-4">Submit</button>
+  </div>
+        
 </div>
 
 <!-- ############ PAGE END-->
@@ -828,137 +812,7 @@
   </div>
   <!-- / -->
 
-  <!-- theme switcher -->
-  <div id="switcher">
-    <div class="switcher box-color dark-white text-color" id="sw-theme">
-      <a href ui-toggle-class="active" target="#sw-theme" class="box-color dark-white text-color sw-btn">
-        <i class="fa fa-gear"></i>
-      </a>
-      <div class="box-header">
-        <a href="https://themeforest.net/item/flatkit-app-ui-kit/13231484?ref=flatfull" class="btn btn-xs rounded danger pull-right">BUY</a>
-        <h2>Theme Switcher</h2>
-      </div>
-      <div class="box-divider"></div>
-      <div class="box-body">
-        <p class="hidden-md-down">
-          <label class="md-check m-y-xs"  data-target="folded">
-            <input type="checkbox">
-            <i class="green"></i>
-            <span class="hidden-folded">Folded Aside</span>
-          </label>
-          <label class="md-check m-y-xs" data-target="boxed">
-            <input type="checkbox">
-            <i class="green"></i>
-            <span class="hidden-folded">Boxed Layout</span>
-          </label>
-          <label class="m-y-xs pointer" ui-fullscreen>
-            <span class="fa fa-expand fa-fw m-r-xs"></span>
-            <span>Fullscreen Mode</span>
-          </label>
-        </p>
-        <p>Colors:</p>
-        <p data-target="themeID">
-          <label class="radio radio-inline m-0 ui-check ui-check-color ui-check-md" data-value="{primary:'primary', accent:'accent', warn:'warn'}">
-            <input type="radio" name="color" value="1">
-            <i class="primary"></i>
-          </label>
-          <label class="radio radio-inline m-0 ui-check ui-check-color ui-check-md" data-value="{primary:'accent', accent:'cyan', warn:'warn'}">
-            <input type="radio" name="color" value="2">
-            <i class="accent"></i>
-          </label>
-          <label class="radio radio-inline m-0 ui-check ui-check-color ui-check-md" data-value="{primary:'warn', accent:'light-blue', warn:'warning'}">
-            <input type="radio" name="color" value="3">
-            <i class="warn"></i>
-          </label>
-          <label class="radio radio-inline m-0 ui-check ui-check-color ui-check-md" data-value="{primary:'success', accent:'teal', warn:'lime'}">
-            <input type="radio" name="color" value="4">
-            <i class="success"></i>
-          </label>
-          <label class="radio radio-inline m-0 ui-check ui-check-color ui-check-md" data-value="{primary:'info', accent:'light-blue', warn:'success'}">
-            <input type="radio" name="color" value="5">
-            <i class="info"></i>
-          </label>
-          <label class="radio radio-inline m-0 ui-check ui-check-color ui-check-md" data-value="{primary:'blue', accent:'indigo', warn:'primary'}">
-            <input type="radio" name="color" value="6">
-            <i class="blue"></i>
-          </label>
-          <label class="radio radio-inline m-0 ui-check ui-check-color ui-check-md" data-value="{primary:'warning', accent:'grey-100', warn:'success'}">
-            <input type="radio" name="color" value="7">
-            <i class="warning"></i>
-          </label>
-          <label class="radio radio-inline m-0 ui-check ui-check-color ui-check-md" data-value="{primary:'danger', accent:'grey-100', warn:'grey-300'}">
-            <input type="radio" name="color" value="8">
-            <i class="danger"></i>
-          </label>
-        </p>
-        <p>Themes:</p>
-        <div data-target="bg" class="row no-gutter text-u-c text-center _600 clearfix">
-          <label class="p-a col-sm-6 light pointer m-0">
-            <input type="radio" name="theme" value="" hidden>
-            Light
-          </label>
-          <label class="p-a col-sm-6 grey pointer m-0">
-            <input type="radio" name="theme" value="grey" hidden>
-            Grey
-          </label>
-          <label class="p-a col-sm-6 dark pointer m-0">
-            <input type="radio" name="theme" value="dark" hidden>
-            Dark
-          </label>
-          <label class="p-a col-sm-6 black pointer m-0">
-            <input type="radio" name="theme" value="black" hidden>
-            Black
-          </label>
-        </div>
-      </div>
-    </div>
-    
-    <div class="switcher box-color black lt" id="sw-demo">
-      <a href ui-toggle-class="active" target="#sw-demo" class="box-color black lt text-color sw-btn">
-        <i class="fa fa-list text-white"></i>
-      </a>
-      <div class="box-header">
-        <h2>Demos</h2>
-      </div>
-      <div class="box-divider"></div>
-      <div class="box-body">
-        <div class="row no-gutter text-u-c text-center _600 clearfix">
-          <a href="dashboard.html"
-            class="p-a col-sm-6 primary">
-            <span class="text-white">Default</span>
-          </a>
-          <a href="dashboard.0.html"
-            class="p-a col-sm-6 success">
-            <span class="text-white">Zero</span>
-          </a>
-          <a href="dashboard.1.html"
-            class="p-a col-sm-6 blue">
-            <span class="text-white">One</span>
-          </a>
-          <a href="dashboard.2.html"
-            class="p-a col-sm-6 warn">
-            <span class="text-white">Two</span>
-          </a>
-          <a href="dashboard.3.html"
-            class="p-a col-sm-6 danger">
-            <span class="text-white">Three</span>
-          </a>
-          <a href="dashboard.4.html"
-            class="p-a col-sm-6 green">
-            <span class="text-white">Four</span>
-          </a>
-          <a href="dashboard.5.html"
-            class="p-a col-sm-6 info">
-            <span class="text-white">Five</span>
-          </a>
-          <div 
-            class="p-a col-sm-6 lter">
-            <span class="text">...</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  
   <!-- / -->
 
 <!-- ############ LAYOUT END-->
@@ -994,5 +848,39 @@
   <script src="../libs/jquery/jquery-pjax/jquery.pjax.js"></script>
   <script src="scripts/ajax.js"></script>
 <!-- endbuild -->
+<script>
+  document.getElementById('fileInput1').addEventListener('change', function() {
+    handleFileChange(this, 'fileName1', 'fileImage1');
+});
+
+document.getElementById('fileInput2').addEventListener('change', function() {
+    handleFileChange(this, 'fileName2', 'fileImage2');
+});
+
+document.getElementById('fileInput1').addEventListener('change', function() {
+    handleFileChange(this, 'fileName1', 'fileImage1', 'img');
+});
+
+document.getElementById('fileInput2').addEventListener('change', function() {
+    handleFileChange(this, 'fileName2', 'fileVideo2', 'video');
+});
+
+function handleFileChange(input, fileNameId, mediaId, mediaType) {
+    var file = input.files[0];
+    var fileName = file ? file.name : 'No file selected';
+    document.getElementById(fileNameId).textContent = fileName;
+    document.getElementById(fileNameId).href = URL.createObjectURL(file);
+    
+    var mediaElement = document.getElementById(mediaId);
+    if (file && file.type.startsWith(mediaType + '/')) {
+        mediaElement.src = URL.createObjectURL(file);
+        mediaElement.style.display = 'block';
+    } else {
+        mediaElement.style.display = 'none';
+    }
+}
+
+
+</script>
 </body>
 </html>

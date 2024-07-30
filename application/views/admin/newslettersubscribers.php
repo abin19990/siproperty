@@ -137,7 +137,7 @@ require ('conn.php');
   
   <div class="box">
     <div class="box-header">
-      <h3>List carousel</h3>
+      <h3>List News Letter Subscribers</h3>
     </div>
     <div class="row p-a">
      
@@ -152,46 +152,46 @@ require ('conn.php');
         <thead>
           <tr >
             <th>SL.No</th>
-            <th>Main heading</th>
-            <th>Sub title</th>
+            <th>Subscribers Email Id</th>
+            <!--th>Sub title</th>
             <th>Status</th>
-            <th>Picture</th>
+            <th>Picture</th-->
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
         <?php
-        
-        foreach($result as $res){
           $i=1;
-          $i
+        foreach($result as $res){
+        
+         
         ?>
-            <tr id="row<?php echo $res['id'] ?>">
+            <tr id="row<?php echo $res['newsletterid'] ?>">
             <td><?php echo $i;?></td>
-            <td><?php echo $res['maintitle'] ?></td>
-            <td><?php echo $res['subtitle'] ?></td>
-            <td><?php if ($res['active']==1){ echo "Active"; } else { echo "Inactive";}?></td>
-            <?php 
-            $imgpath="carosel";
-             ?>
-            <td>
-            <img  style="height:8em; width:7em" src=<?php echo base_url().'uploads/carousel/'.$res['picture']?> >
-            </td>
+            <td><?php echo $res['subscribeemailid'] ?></td>
+            <td><?php //echo $res['subtitle'] ?></td>
+            
            <td>
-           <a href="<?php echo base_url().'admin/editcarousel/'.$res['id'];?>"><button class="btn btn-success" >
+           <!--a href="<?php //echo base_url().'admin/editcarousel/'.$res['newsletterid'];?>"><button class="btn btn-success" >
                 Edit
-            </button></a> 
-            <button class="delete btn btn-danger"><a href="#" onclick="delrow(<?php echo $res['id'];?>)">
+            </button></a--> 
+            <button class="delete btn btn-danger"><a href="#" onclick="delrow(<?php echo $res['newsletterid'];?>)">
                 Delete
             </button>
             </td>
           </tr>          
-        <?php
+        <?php $i++;
         }
+
+       
         ?>      
                            
         </tbody>
       </table>
+      <div class="row">
+      <div class="col-md-10"></div>
+      <div class="col-md-2"><?php  echo "".$links;?></div></div>
+    </div>
     </div>
      
   </div>
@@ -216,8 +216,8 @@ require ('conn.php');
  <script>
     function delrow(id){
 $.ajax({
-            type: 'GET',
-            url: "<?php echo base_url().'Admin/deletecarousel';?>",
+            type:'GET',
+            url: "<?php echo base_url().'Admin/deletesubscribers';?>",
             data:{id:id},
             success:function(data){
                 $("#row"+id).remove();
