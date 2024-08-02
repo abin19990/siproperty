@@ -10,23 +10,23 @@
   <!-- for ios 7 style, multi-resolution icon of 152x152 -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
-  <link rel="apple-touch-icon" href="../assets/images/logo.png">
+  <link rel="apple-touch-icon" href="<?php echo base_url().'assets/images/logo.png'?>">
   <meta name="apple-mobile-web-app-title" content="Flatkit">
   <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
   <meta name="mobile-web-app-capable" content="yes">
-  <link rel="shortcut icon" sizes="196x196" href="../assets/images/logo.png">
+  <link rel="shortcut icon" sizes="196x196" href="<?php echo base_url().'assets/images/logo.png'?>">
   
   <!-- style -->
-  <link rel="stylesheet" href="../assets/animate.css/animate.min.css" type="text/css" />
-  <link rel="stylesheet" href="../assets/glyphicons/glyphicons.css" type="text/css" />
-  <link rel="stylesheet" href="../assets/font-awesome/css/font-awesome.min.css" type="text/css" />
-  <link rel="stylesheet" href="../assets/material-design-icons/material-design-icons.css" type="text/css" />
+  <link rel="stylesheet" href="<?php echo base_url().'assets/animate.css/animate.min.css" type="text/css'?>" />
+  <link rel="stylesheet" href="<?php echo base_url().'assets/glyphicons/glyphicons.css'?>" type="text/css" />
+  <link rel="stylesheet" href="<?php echo base_url().'assets/font-awesome/css/font-awesome.min.css'?>" type="text/css" />
+  <link rel="stylesheet" href="<?php echo base_url().'assets/material-design-icons/material-design-icons.css'?>" type="text/css" />
 
-  <link rel="stylesheet" href="../assets/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+  <link rel="stylesheet" href="<?php echo base_url().'assets/bootstrap/dist/css/bootstrap.min.css'?>" type="text/css" />
   <!-- build:css ../assets/styles/app.min.css -->
-  <link rel="stylesheet" href="../assets/styles/app.css" type="text/css" />
+  <link rel="stylesheet" href="<?php echo base_url().'assets/styles/app.css" type="text/css'?>" />
   <!-- endbuild -->
-  <link rel="stylesheet" href="../assets/styles/font.css" type="text/css" />
+  <link rel="stylesheet" href="<?php echo base_url().'assets/styles/font.css" type="text/css'?>" />
   <style>
     .form-file {
         display: flex;
@@ -72,7 +72,7 @@
         <div class="nav-fold">
         	<a href="profile.html">
         	    <span class="pull-left">
-        	      <img src="../assets/images/a0.jpg" alt="..." class="w-40 img-circle">
+        	      <img src="<?php echo base_url().'assets/images/a0.jpg'?>" alt="..." class="w-40 img-circle">
         	    </span>
         	    <span class="clear hidden-folded p-x">
         	      <span class="block _500">Jean Reyes</span>
@@ -107,11 +107,11 @@
                     <i class="fa fa-fw fa-plus text-muted"></i>
                     <span>New</span>
                   </a>
-                  <div ui-include="'../views/blocks/dropdown.new.html'"></div>
+                  <div ui-include="<?php echo base_url().'assets/views/blocks/dropdown.new.html'?>"></div>
                 </li>
               </ul>
         
-              <div ui-include="'../views/blocks/navbar.form.html'"></div>
+              <div ui-include="<?php echo base_url().'assets/views/blocks/navbar.form.html'?>"></div>
               <!-- / -->
             </div>
             <!-- / navbar collapse -->
@@ -123,16 +123,16 @@
                   <i class="material-icons">&#xe7f5;</i>
                   <span class="label label-sm up warn">3</span>
                 </a>
-                <div ui-include="'../views/blocks/dropdown.notification.html'"></div>
+                <div ui-include="<?php echo base_url().'assets/views/blocks/dropdown.notification.html'?>"></div>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link p-0 clear" href="#" data-toggle="dropdown">
                   <span class="avatar w-32">
-                    <img src="../assets/images/a0.jpg" alt="...">
+                    <img src="<?php echo base_url().'assets/images/a0.jpg'?>" alt="...">
                     <i class="on b-white bottom"></i>
                   </span>
                 </a>
-                <div ui-include="'../views/blocks/dropdown.user.html'"></div>
+                <div ui-include="<?php echo base_url().'assets/views/blocks/dropdown.user.html'?>"></div>
               </li>
               <li class="nav-item hidden-md-up">
                 <a class="nav-link pl-2" data-toggle="collapse" data-target="#collapse">
@@ -150,7 +150,7 @@
           <a ui-scroll-to="content"><i class="fa fa-long-arrow-up p-x-sm"></i></a>
         </div>
         <div class="nav">
-          <a class="nav-link" href="../">About</a>
+          <a class="nav-link" href="">About</a>
           <a class="nav-link" href="http://themeforest.net/user/flatfull/portfolio?ref=flatfull">Get it</a>
         </div>
       </div>
@@ -159,184 +159,164 @@
 
 <!-- ############ PAGE START-->
 <div class="padding">
-  
-  <div class="row">
-    <div class="col-sm-6">
-      <form ui-jp="parsley">
-        <div class="box">
-          <div class="box-header">
-            <h2>Our Story</h2>
-          </div>
-          <div class="box-body">
-           
-            <div class="form-group">
-              <label>Title</label>
-              <input type="text" class="form-control" required>                        
-            </div>
-            <div class="form-group" style="height: 200px;">
-              <label>Message</label>
-              <textarea class="form-control" rows="6" data-minwords="6" required placeholder="Type your message"></textarea>
-            </div>
-                        
-          </div>
-          <!-- <div class="dker p-a text-right">
-            <button type="submit" class="btn info">Submit</button>
-          </div> -->
-        </div>
-      </form>
-    </div>
-    <div class="col-sm-6">
-      <form ui-jp="parsley">
-        <div class="box">
-          <div class="box-header">
-            <h2>Section</h2>
-          </div>
-          <div class="box-body">
-                                
-              <div class="row m-b">
-                <div class="col-sm-6">
-                  <label>Title 1</label>
-                  <input type="text" class="form-control" placeholder="enter your title 1" required>
-                </div>
-                <div class="col-sm-6">
-                  <label>Title 2</label>
-                  <input type="text" class="form-control" placeholder="enter your title 2" required>
-                </div>
-              </div>
-              <div class="form-group">
-                <label>Url 1</label>
-                <input type="url" required class="form-control" placeholder="Your website url">
-              </div>
-              <div class="form-group">
-                <label>Url 2</label>
-                <input type="url" required class="form-control" placeholder="Your website url">
-              </div>
-              <div class="form-group row">
-                <label class="col-sm-2 form-control-label">File input</label>
-                <div class="col-sm-6">
-                    <div class="form-file">
-                        <img id="fileImage" alt="">
-                        <a href="#" id="fileName"></a>
-                        <input type="file" id="fileInput">
-                        <button class="btn btn-primary" onclick="document.getElementById('fileInput').click();">Select file ...</button>
+    <form action="<?= base_url('admin/updatecontents'); ?>" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="box">
+                    <div class="box-header">
+                        <h2>Our Story</h2>
+                    </div>
+                    <div class="box-body">
+                        <?php foreach ($home_story as $story): ?>
+                            <div class="form-group">
+                                <label>Title</label>
+                                <input type="text" name="title1" class="form-control" value="<?= $story['title']; ?>"  >                        
+                            </div>
+                            <div class="form-group" style="height: 200px;">
+                                <label>Message</label>
+                                <textarea name="contents1" class="form-control" rows="6" data-minwords="6"  ><?= $story['contents']; ?></textarea>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>
-          </div>
-         
+            <div class="col-sm-6">
+                <div class="box">
+                    <div class="box-header">
+                        <h2>Section</h2>
+                    </div>
+                    <div class="box-body">
+                        <?php foreach ($home_section as $section): ?>
+                            <div class="row m-b">
+                                <div class="col-sm-6">
+                                    <label>Title 1</label>
+                                    <input type="text" name="section_heading1" class="form-control" value="<?= $section['title1']; ?>"  >
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>Title 2</label>
+                                    <input type="text" name="section_heading2" class="form-control" value="<?= $section['title2']; ?>"  >
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Url 1</label>
+                                <input type="url" name="section_url1" class="form-control" value="<?= $section['url1']; ?>"  >
+                            </div>
+                            <div class="form-group">
+                                <label>Url 2</label>
+                                <input type="url" name="section_url2" class="form-control" value="<?= $section['url2']; ?>"  >
+                            </div>
+                            <div class="col-sm-9">
+                                    <img style="height:8em; width:7em" src="<?php echo base_url().'uploads/section/'.$section['bgpic']; ?>" >
+                                    <input type="hidden" name="existing_bgpic" value="<?php echo $section['bgpic']; ?>">
+                                    <input type="file" name="bgpic" class="form-control">
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
         </div>
-      </form>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="box">
+                    <div class="box-header">
+                        <h2>Reason to Choose </h2>
+                    </div>
+                    <div class="box-body">
+                        <?php foreach ($home_reason as $reason): ?>
+                            <div class="form-group row">
+                                <label class="col-sm-3 form-control-label">Heading 1</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="reason_heading1" class="form-control" value="<?= $reason['heading1']; ?>"  >
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 form-control-label">Sub heading 1</label>
+                                <div class="col-sm-9">
+                                    <textarea name="reason_subheading1" class="form-control" rows="6" data-minwords="6"  ><?= $reason['subheading1']; ?></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 form-control-label">Heading 2</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="reason_heading2" class="form-control" value="<?= $reason['heading2']; ?>"  >
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 form-control-label">Sub heading 2</label>
+                                <div class="col-sm-9">
+                                    <textarea name="reason_subheading2" class="form-control" rows="6" data-minwords="6"  ><?= $reason['subheading2']; ?></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 form-control-label">Heading 3</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="reason_heading3" class="form-control" value="<?= $reason['heading3']; ?>"  >
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 form-control-label">Sub heading 3</label>
+                                <div class="col-sm-9">
+                                    <textarea name="reason_subheading3" class="form-control" rows="6" data-minwords="6"  ><?= $reason['subheading3']; ?></textarea>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="box">
+                    <div class="box-header">
+                        <h2>About</h2>
+                    </div>
+                    <div class="box-body">
+                        <?php foreach ($home_ceo as $ceo): ?>
+                            <div class="form-group row">
+                                <label class="col-sm-3 form-control-label">Ceo name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="ceo_name" class="form-control" value="<?= $ceo['name']; ?>"  >
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 form-control-label">Ceo designation</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="ceo_designation" class="form-control" value="<?= $ceo['designation']; ?>"  >
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 form-control-label">Ceo comment</label>
+                                <div class="col-sm-9">
+                                    <textarea name="ceo_comment" class="form-control" rows="6" data-minwords="6"  ><?= $ceo['comment']; ?></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+    <label class="col-sm-3 form-control-label">Profile Picture</label>
+    <div class="col-sm-9">
+        <img style="height:8em; width:7em" src="<?php echo base_url().'uploads/ceo/'.$ceo['profilepic']; ?>" >
+        <input type="hidden" name="existing_profilepic" value="<?php echo $ceo['profilepic']; ?>">
+        <input type="file" name="ceo_profile_picture" class="form-control">
     </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-6">
-      <form ui-jp="parsley">
-        <div class="box">
-          <div class="box-header">
-            <h2>Reason to Choose </h2>
-          </div>
-          <div class="box-body">                    
-            <div class="form-group row">
-              <label class="col-sm-3 form-control-label">Heading 1</label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control" required placeholder="">
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-sm-3 form-control-label">Sub heading</label>
-              <div class="col-sm-9">
-              <textarea class="form-control" rows="6" data-minwords="6" required placeholder="Type your message"></textarea>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-sm-3 form-control-label">Heading 2</label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control" required placeholder="">
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-sm-3 form-control-label">Sub heading</label>
-              <div class="col-sm-9">
-              <textarea class="form-control" rows="6" data-minwords="6" required placeholder="Type your message"></textarea>
-              </div>
-            </div>
+</div>
 
-            <div class="form-group row">
-              <label class="col-sm-3 form-control-label">Heading 3</label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control" required placeholder="">
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-sm-3 form-control-label">Sub heading</label>
-              <div class="col-sm-9">
-              <textarea class="form-control" rows="6" data-minwords="6" required placeholder="Type your message"></textarea>
-              </div>
-            </div>
-            
-          </div>
-          
-        </div>
-      </form>
+<div class="form-group row">
+    <label class="col-sm-3 form-control-label">About Video</label>
+    <div class="col-sm-9">
+        <video style="height:8em; width:20em" controls>
+            <source src="<?php echo base_url().'uploads/ceo/video/'.$ceo['aboutvideo']; ?>" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <input type="hidden" name="existing_aboutvideo" value="<?php echo $ceo['aboutvideo']; ?>">
+        <input type="file" name="video1" class="form-control">
     </div>
-    <div class="col-sm-6">
-      <form ui-jp="parsley">
-        <div class="box">
-          <div class="box-header">
-            <h2>About</h2>
-          </div>
-          <div class="box-body">                    
-            <div class="form-group row">
-              <label class="col-sm-3 form-control-label">Ceo name</label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control" required placeholder="email">    
-              </div>
+</div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
             </div>
-            
-            <div class="form-group row">
-              <label class="col-sm-3 form-control-label">Ceo designation</label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control" required placeholder="email">    
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-sm-3 form-control-label">Ceo Comment</label>
-              <div class="col-sm-9">
-              <textarea class="form-control" rows="6" data-minwords="6" required placeholder="Type your message"></textarea>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-sm-3 form-control-label">Ceo profile Picture </label>
-              <div class="col-sm-6">
-                  <div class="form-file d-flex align-items-center">
-                      <img id="fileImage1" alt="">
-                      <a href="#" id="fileName1"></a>
-                      <input type="file" id="fileInput1" accept="image/*" style="display: none;">
-                      <button class="btn btn-primary ml-auto" onclick="document.getElementById('fileInput1').click();">Select file ...</button>
-                  </div>
-              </div>
-          </div>
-          <div class="form-group row">
-              <label class="col-sm-3 form-control-label">About Video </label>
-              <div class="col-sm-6">
-                  <div class="form-file d-flex align-items-center">
-                      <video id="fileVideo2" controls style="display: none; max-width: 100px; max-height: 100px;"></video>
-                      <a href="#" id="fileName2"></a>
-                      <input type="file" id="fileInput2" accept="video/*" style="display: none;">
-                      <button class="btn btn-primary ml-auto" onclick="document.getElementById('fileInput2').click();">Select file ...</button>
-                  </div>
-              </div>
-          </div>
-          
         </div>
-        
-      </form>
-    </div>
-  </div>
-  <div class="center-container col-md-12">
-    <button type="submit" class="btn btn-success col-4">Submit</button>
-  </div>
-        
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+    </form>
 </div>
 
 <!-- ############ PAGE END-->
@@ -353,33 +333,33 @@
   </div>
 <!-- build:js scripts/app.html.js -->
 <!-- jQuery -->
-  <script src="../libs/jquery/jquery/dist/jquery.js"></script>
+  <script src="<?php echo base_url().'assets/libs/jquery/jquery/dist/jquery.js'?>"></script>
 <!-- Bootstrap -->
-  <script src="../libs/jquery/tether/dist/js/tether.min.js"></script>
-  <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="<?php echo base_url().'assets/libs/jquery/tether/dist/js/tether.min.js'?>"></script>
+  <script src="<?php echo base_url().'assets/libs/jquery/bootstrap/dist/js/bootstrap.js'?>"></script>
 <!-- core -->
-  <script src="../libs/jquery/underscore/underscore-min.js"></script>
-  <script src="../libs/jquery/jQuery-Storage-API/jquery.storageapi.min.js"></script>
-  <script src="../libs/jquery/PACE/pace.min.js"></script>
+  <script src="<?php echo base_url().'assets/libs/jquery/underscore/underscore-min.js'?>"></script>
+  <script src="<?php echo base_url().'assets/libs/jquery/jQuery-Storage-API/jquery.storageapi.min.js'?>"></script>
+  <script src="<?php echo base_url().'assets/libs/jquery/PACE/pace.min.js'?>"></script>
 
-  <script src="scripts/config.lazyload.js"></script>
+  <script src="<?php echo base_url().'assets/scripts/config.lazyload.js'?>"></script>
 
-  <script src="scripts/palette.js"></script>
-  <script src="scripts/ui-load.js"></script>
-  <script src="scripts/ui-jp.js"></script>
-  <script src="scripts/ui-include.js"></script>
-  <script src="scripts/ui-device.js"></script>
-  <script src="scripts/ui-form.js"></script>
-  <script src="scripts/ui-nav.js"></script>
-  <script src="scripts/ui-screenfull.js"></script>
-  <script src="scripts/ui-scroll-to.js"></script>
-  <script src="scripts/ui-toggle-class.js"></script>
+  <script src="<?php echo base_url().'assets/scripts/palette.js'?>"></script>
+  <script src="<?php echo base_url().'assets/scripts/ui-load.js'?>"></script>
+  <script src="<?php echo base_url().'assets/scripts/ui-jp.js'?>"></script>
+  <script src="<?php echo base_url().'assets/scripts/ui-include.js'?>"></script>
+  <script src="<?php echo base_url().'assets/scripts/ui-device.js'?>"></script>
+  <script src="<?php echo base_url().'assets/scripts/ui-form.js'?>"></script>
+  <script src="<?php echo base_url().'assets/scripts/ui-nav.js'?>"></script>
+  <script src="<?php echo base_url().'assets/scripts/ui-screenfull.js'?>"></script>
+  <script src="<?php echo base_url().'assets/scripts/ui-scroll-to.js'?>"></script>
+  <script src="<?php echo base_url().'assets/scripts/ui-toggle-class.js'?>"></script>
 
-  <script src="scripts/app.js"></script>
+  <script src="<?php echo base_url().'assets/scripts/app.js'?>"></script>
 
   <!-- ajax -->
-  <script src="../libs/jquery/jquery-pjax/jquery.pjax.js"></script>
-  <script src="scripts/ajax.js"></script>
+  <script src="<?php echo base_url().'assets/libs/jquery/jquery-pjax/jquery.pjax.js'?>"></script>
+  <script src="<?php echo base_url().'assets/scripts/ajax.js'?>"></script>
 <!-- endbuild -->
 <script>
   document.getElementById('fileInput1').addEventListener('change', function() {

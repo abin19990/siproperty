@@ -36,7 +36,7 @@
   <!-- aside -->
     <?php 
     include "sidebar.php";
-    ?>
+    ?>	
        
       <div class="b-t">
         <div class="nav-fold">

@@ -149,54 +149,66 @@
   <p>
   Fill out the required details.
   </p>
+  <?php if ($this->session->flashdata('message')): ?>
+            <div class="alert alert-success">
+                <?php echo $this->session->flashdata('message'); ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if ($this->session->flashdata('error')): ?>
+            <div class="alert alert-danger">
+                <?php echo $this->session->flashdata('error'); ?>
+            </div>
+        <?php endif; ?>
+  <form action="<?= base_url('admin/addprojectprocess'); ?>" method="post" enctype="multipart/form-data">
   <span id="solmsg" class="text-success"></span><br>
   <div class="p-x-xs">
     <div class="form-group row">
       <label class="col-sm-2 form-control-label">Project Name</label>
       <div class="col-sm-6">
-        <input type="text" class="form-control rounded">
+        <input type="text" name="projetname" class="form-control rounded">
       </div>
     </div>
 
     <div class="form-group row">
       <label class="col-sm-2 form-control-label">Price Starts from</label>
       <div class="col-sm-6">
-        <input type="text" class="form-control rounded">
+        <input type="text" name="pricestart" class="form-control rounded">
       </div>
     </div>
 
     <div class="form-group row">
       <label class="col-sm-2 form-control-label">Project Descripition</label>
       <div class="col-sm-6">
-        <textarea class="form-control " rows="5"></textarea>
+        <textarea class="form-control" name="projectdescripition" rows="5"></textarea>
       </div>
     </div>
     
     <div class="form-group row">
       <label class="col-sm-2 form-control-label" for="input-id-1">No of Bed room</label>
       <div class="col-sm-6">
-        <input type="text" class="form-control rounded" id="input-id-1">
+        <input type="text" class="form-control rounded" name="no_bed" id="input-id-1">
       </div>
     </div>
     
     <div class="form-group row">
       <label class="col-sm-2 form-control-label">No of Bathroom</label>
       <div class="col-sm-6">
-        <input type="text" class="form-control rounded">
+        <input type="text" name="no_bathroom" class="form-control rounded">
       </div>
     </div>
     
     <div class="form-group row">
       <label class="col-sm-2 form-control-label">Square foot</label>
       <div class="col-sm-6">
-        <input type="text"  class="form-control rounded" placeholder="">
+        <input type="text" name="no_square"  class="form-control rounded" placeholder="">
       </div>
     </div>
     
     <div class="form-group row">
       <label class="col-sm-2 form-control-label">Project Status</label>
       <div class="col-sm-6">
-       <select class="form-control rounded" id="actionSelect">
+       <select class="form-control rounded" id="actionSelect" name="actionStatus">
             <option value="">select</option>
             <option value="1">Ongoing </option>
             <option value="2">Completed</option>           
@@ -207,7 +219,7 @@
         <div class="form-group row">
       <label class="col-sm-2 form-control-label">Project Status</label>
       <div class="col-sm-6">
-       <select class="form-control rounded" id="actionSelect">
+       <select class="form-control rounded" id="actionSelect" name="actionSelect">
             <option value="">select</option>
             <option value="1">Active </option>
             <option value="2">Not Active</option>           
@@ -220,12 +232,10 @@
         <div class="form-group row">
         <label class="col-sm-2 form-control-label">File input</label>
         <div class="col-sm-6">
-            <div class="form-file">
-                <img id="fileImage" alt="Selected Image">
-                <a href="#" id="fileName"></a>
-                <input type="file" id="fileInput">
-                <button class="btn btn-primary" onclick="document.getElementById('fileInput').click();">Select file ...</button>
-            </div>
+        <div class="col-sm-9">
+            
+            <input type="file" name="projectpic" class="form-control">
+    </div>
         </div>
     </div>
 

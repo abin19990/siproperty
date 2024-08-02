@@ -5236,47 +5236,155 @@ $id=$this->uri->segment(3);
 
 
 public function content() {
-	// $data['home_story'] = $this->Servicesmodel->get_home_story();
-	// $data['home_reason'] = $this->Servicesmodel->get_home_reason();
-	// $data['home_ceo'] = $this->Servicesmodel->get_home_ceo();
-	$this->load->view('admin/contents');
+	$this->load->model('Servicesmodel');
+	$data['home_story'] = $this->Servicesmodel->get_home_story();
+	$data['home_reason'] = $this->Servicesmodel->get_home_reason();
+	$data['home_ceo'] = $this->Servicesmodel->get_home_ceo();
+	$data['home_section']=$this->Servicesmodel->get_home_section();
+	$this->load->view('admin/contents',$data);
+	
+
 }
 
 public function updatecontents() {
-	if ($this->input->post('update_story')) {
-		$id = $this->input->post('id');
-		$data = array(
-			'title' => $this->input->post('title'),
-			'message' => $this->input->post('message')
-		);
-		$this->Servicesmodel->update_home_story($id, $data);
-	}
+	$this->load->model('Servicesmodel');
+	if ($this->input->post()) {
+        // Get story ID from the POST data
+        $id = $this->input->post('id'); // Ensure this is the correct field name
 
-	if ($this->input->post('update_reason')) {
-		$id = $this->input->post('id');
-		$data = array(
-			'heading1' => $this->input->post('heading1'),
-			'subheading1' => $this->input->post('subheading1'),
-			'heading2' => $this->input->post('heading2'),
-			'subheading2' => $this->input->post('subheading2'),
-			'heading3' => $this->input->post('heading3'),
-			'subheading3' => $this->input->post('subheading3')
-		);
-		$this->Servicesmodel->update_home_reason($id, $data);
-	}
+        $story_data = array(
+            'title' => $this->input->post('title1'),
+            'contents' => $this->input->post('contents1')
+        );
 
-	if ($this->input->post('update_ceo')) {
-		$id = $this->input->post('id');
-		$data = array(
-			'ceo_name' => $this->input->post('ceo_name'),
-			'ceo_designation' => $this->input->post('ceo_designation'),
-			'ceo_comment' => $this->input->post('ceo_comment'),
-			'ceo_profile_picture' => $this->input->post('ceo_profile_picture'),
-			'about_video' => $this->input->post('about_video')
-		);
-		$this->Servicesmodel->update_home_ceo($id, $data);
-	}
+        // Update home_story with both ID and data
+        $this->Servicesmodel->update_home_story($id, $story_data);
 
+
+		$id = $this->input->post('id'); // Ensure this is the correct field name
+
+		$image1 = $this->input->post('existing_bgpic'); // Existing profile picture
+		if (isset($_FILES['bgpic']) && $_FILES['bgpic']['name'] != '') {
+			$ext = pathinfo($_FILES["bgpic"]["name"], PATHINFO_EXTENSION);
+			$new_name = time() . 'bgpic' . '.' . $ext;
+			$config['file_name'] = $new_name;
+			$config['upload_path'] = 'uploads/section';
+			$config['allowed_types'] = 'gif|jpg|png|jpeg';    
+			$config['max_size'] = '10240'; // 10 MB
+			$this->load->library('upload', $config);
+			$this->upload->initialize($config);
+	
+			if ($_FILES['bgpic']['error'] != 0) {
+				echo 'Error during file upload: ' . $_FILES['bgpic']['error'];
+			} else {
+				if (file_exists('uploads/section/' . $new_name)) {
+					echo 'File already exists: uploads/section/' . $new_name;
+				} else {
+					if (!$this->upload->do_upload('bgpic')) {
+						echo $this->upload->display_errors();
+					} else {
+						$image1 = $new_name;
+					}
+				}
+			}
+		}
+
+
+        $section_data = array(
+            'title1' => $this->input->post('section_heading1'),
+            'title2' => $this->input->post('section_heading2'),
+			'url1'=>$this ->input->post('section_url1'),
+			'url2'=>$this ->input->post('section_url2'),
+			'bgpic'=>$image1		
+		
+		);
+
+        // Update home_story with both ID and data
+        $this->Servicesmodel->update_home_section($id, $section_data);
+
+
+		// Update home_reason with ID and data
+        $reason_id = $this->input->post('reason_id');
+        $reason_data = array(
+            'heading1' => $this->input->post('reason_heading1'),
+            'subheading1' => $this->input->post('reason_subheading1'),
+            'heading2' => $this->input->post('reason_heading2'),
+            'subheading2' => $this->input->post('reason_subheading2'),
+            'heading3' => $this->input->post('reason_heading3'),
+            'subheading3' => $this->input->post('reason_subheading3')
+        );
+        $this->Servicesmodel->update_home_reason($reason_id, $reason_data);
+
+		
+		
+
+       
+       
+		$image1 = $this->input->post('existing_profilepic'); // Existing profile picture
+		if (isset($_FILES['ceo_profile_picture']) && $_FILES['ceo_profile_picture']['name'] != '') {
+			$ext = pathinfo($_FILES["ceo_profile_picture"]["name"], PATHINFO_EXTENSION);
+			$new_name = time() . 'profilepic' . '.' . $ext;
+			$config['file_name'] = $new_name;
+			$config['upload_path'] = 'uploads/ceo';
+			$config['allowed_types'] = 'gif|jpg|png|jpeg';    
+			$config['max_size'] = '10240'; // 10 MB
+			$this->load->library('upload', $config);
+			$this->upload->initialize($config);
+	
+			if ($_FILES['ceo_profile_picture']['error'] != 0) {
+				echo 'Error during file upload: ' . $_FILES['ceo_profile_picture']['error'];
+			} else {
+				if (file_exists('uploads/ceo/' . $new_name)) {
+					echo 'File already exists: uploads/ceo/' . $new_name;
+				} else {
+					if (!$this->upload->do_upload('ceo_profile_picture')) {
+						echo $this->upload->display_errors();
+					} else {
+						$image1 = $new_name;
+					}
+				}
+			}
+		}
+		
+		// Process video upload
+		$video1 = $this->input->post('existing_aboutvideo'); // Existing about video
+		if (isset($_FILES['video1']) && $_FILES['video1']['name'] != '') {
+			$ext = pathinfo($_FILES["video1"]["name"], PATHINFO_EXTENSION);
+			$new_name = time() . 'aboutvideo' . '.' . $ext;
+			$config['file_name'] = $new_name;
+			$config['upload_path'] = 'uploads/ceo/video';
+			$config['allowed_types'] = 'mp4|avi|mov|wmv';    
+			$config['max_size'] = '31457280'; // 30 MB (adjust as needed)
+			$this->upload->initialize($config);
+	
+			if ($_FILES['video1']['error'] != 0) {
+				echo 'Error during file upload: ' . $_FILES['video1']['error'];
+			} else {
+				if (file_exists('uploads/ceo/video/' . $new_name)) {
+					echo 'File already exists: uploads/ceo/video/' . $new_name;
+				} else {
+					if (!$this->upload->do_upload('video1')) {
+						echo $this->upload->display_errors();
+					} else {
+						$video1 = $new_name;
+					}
+				}
+			}
+		}
+	
+		// Prepare data for database update
+		$ceo_data = array(
+			'name' => $this->input->post('ceo_name'),
+			'designation' => $this->input->post('ceo_designation'),
+			'comment' => $this->input->post('ceo_comment'),
+			'profilepic' => $image1,
+			'aboutvideo' => $video1
+		);
+	
+		// Update database record
+		$this->Servicesmodel->update_home_ceo($id, $ceo_data);
+		redirect('admin/content');
+	}
 }
 
 
@@ -5285,21 +5393,73 @@ public function updatecontents() {
 
 
 public function addproject(){
-
-	// if( $this->session->has_userdata('username')) {					
-	// }
-	// else{
-	//   redirect("welcome/services");
-	// }
 	$this->load->model('Servicesmodel');
 	$this->db2->from('home_projects');
     $query = $this->db2->get();
-    // $data['result']=$query->result_array(); 
-	// $data['contactus']=$this->sm->get_contactus();
-	// $data['newsletter']=$this->sm->get_newsletter();
-	// $data['siteinf']=$this->sm->get_siteinf();
 	$this->load->view('Admin/addproject');
 
+}
+
+public function addprojectprocess(){
+	
+	$this->load->model('Servicesmodel');
+	$ext = pathinfo($_FILES["projectpic"]["name"], PATHINFO_EXTENSION);
+        $new_name = time() .'product_picture'. '.' . $ext;
+        $config['file_name'] = $new_name;
+        $config['upload_path'] = 'uploads/project';
+        $config['allowed_types'] = 'gif|jpg|png|jpeg';    
+        $config['max_size'] = '10240'; // 1 MB
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+
+        if (($_FILES['projectpic']['name']) != '') {
+            if (0 < $_FILES['projectpic']['error']) {
+                echo 'Error during file upload: ' . $_FILES['image1']['error'];
+            } else {
+                if (file_exists('uploads/project/' . $new_name)) {
+                    echo 'File already exists: uploads/project/' . $new_name;
+                } else {
+                    if (!$this->upload->do_upload('projectpic')) {
+                        echo $this->upload->display_errors();
+                    } else {
+                        $image1 = $new_name;
+                    }
+                }
+            }
+        } else {
+            $image1 = $image11;
+        }
+
+	$project_data = array(
+        'project_name' => $this->input->post('projetname'),
+        'price' => $this->input->post('pricestart'),
+		'project_descripition'=> $this->input->post('projectdescripition'),
+		'bedroom'=> $this->input->post('no_bed'),
+		'bathroom'=> $this->input->post('no_bathroom'),
+		'squarefeet'=> $this->input->post('no_square'),
+		'product_picture'=>$image1,
+		'status'=> $this->input->post('actionSelect'),
+		'project_status'=> $this->input->post('actionStatus')
+	);
+
+    // Add a new home story
+    if ($this->Servicesmodel->add_project($project_data)) {
+        // Handle success (e.g., redirect or show a success message)
+        $this->session->set_flashdata('message', 'Project added successfully.');
+            redirect('admin/addproject'); 
+    } else {
+        // Handle failure (e.g., show an error message)
+		$this->session->set_flashdata('error', 'Failed to add project.');
+		redirect('admin/addproject');
+    }
+}
+
+public function editproject(){
+	$this->load->model('Servicesmodel');
+	$data['home_projects'] = $this->Servicesmodel->get_home_projects();
+	$data['home_project'] = $this->Servicesmodel->get_home_project_by_id($id);
+	$this->load->view('admin/editproject',$data);
+	
 
 
 }
@@ -5644,6 +5804,15 @@ public function deletetraveldetails(){
 	$this->db2->where('contentid',$id);
 	$this->db2->delete('traveldetails');
 	echo ($this->db2->affected_rows() != 1) ? 'Error in deleting Traveldetails ' : 'Traveldetails  deleted Successfully';
+
+
+}
+
+public function deleteprojects(){
+	$id=$_GET['id'];
+	$this->db2->where('id',$id);
+	$this->db2->delete('home_projects');
+	echo ($this->db2->affected_rows() != 1) ? 'Error in deleting projects' : 'Projects deleted Successfully';
 
 
 }
@@ -8639,31 +8808,27 @@ public function listblog(){
 
 
 public function listongoingprojects(){
-	// if( $this->session->has_userdata('username')) {					
-	// }
-	// else{
-	//   redirect("welcome/services");
-	// }
-	$this->load->model('Servicesmodel');
-	$config = array();
-	$config["base_url"] = base_url() . "/Admin/listongoingprojects";
-	//$config["total_rows"] = $this->sm->get_countsolutions();
-	$config["total_rows"]=$this->sm->get_countongoingprojects();
-	$config["per_page"] = 10;
-	$config["uri_segment"] = 3;
-	$this->pagination->initialize($config);
-	$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-	$data["links"] = $this->pagination->create_links();
-	$data['result']=$this->sm->get_ongoingprojects($config["per_page"], $page);	
-	//$data['result']=$this->sm->get_solutions($config["per_page"], $page);
-	//$this->db2->from('problems');
-    //$query = $this->db2->get();
-    //$data['resultphone']=$query->row();
-	// $data['contactus']=$this->sm->get_contactus();
-	// $data['newsletter']=$this->sm->get_newsletter();
-	// $data['siteinf']=$this->sm->get_siteinf();	
-	$this->load->view('Admin/projectslist',$data);
+    $this->load->model('Servicesmodel');
+    
+    // Pagination configuration
+    $config = array();
+    $config["base_url"] = base_url() . "/Admin/listongoingprojects";
+    $config["total_rows"] = $this->Servicesmodel->get_countongoingprojects();
+    $config["per_page"] = 10;
+    $config["uri_segment"] = 3;
+    $this->pagination->initialize($config);
+    
+    // Get the current page number
+    $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+    
+    // Get the data
+    $data["links"] = $this->pagination->create_links();
+    $data['result'] = $this->Servicesmodel->get_ongoingprojects($config["per_page"], $page);    
+    
+    // Load the view with the data
+    $this->load->view('Admin/listongoingprojects', $data);
 }
+
 
 
 

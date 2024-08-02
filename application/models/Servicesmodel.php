@@ -217,6 +217,10 @@ public function get_home_story() {
         $query = $this->db2->get('home_reason');
         return $query->result_array();
     }
+    public function get_home_section() {
+        $query = $this->db2->get('home_section');
+        return $query->result_array();
+    }
 
     public function get_home_ceo() {
         $query = $this->db2->get('home_ceo');
@@ -227,9 +231,12 @@ public function get_home_story() {
         $this->db->where('id', $id);
         return $this->db2->update('home_story', $data);
     }
-
-    public function update_home_reason($id, $data) {
+    public function update_home_section($id,$data) {
         $this->db->where('id', $id);
+        return $this->db2->update('home_section', $data);
+    }
+    public function update_home_reason($id, $data) {
+        $this->db->where('reason_id', $id);
         return $this->db2->update('home_reason', $data);
     }
 
@@ -901,7 +908,23 @@ function get_producttypeadmin($limit,$start){
     return $query->result_array(); 
     }
 
+    public function add_project($data) {
+        return $this->db2->insert('home_projects', $data);
+    }
+    public function get_home_projects() {
+        $query = $this->db2->get('home_projects');
+        return $query->result_array();
+    }
+    public function get_home_project_by_id($id) {
+        $this->db2->where('id', $id);
+        $query = $this->db2->get('home_projects');
+        return $query->row_array(); 
+    }
 
+    public function update_project($id, $data) {
+        $this->db->where('id', $id);
+        return $this->db2->update('home_projects', $data);
+    }
 
     function get_countongoingprojects(){
         $this->db2->select('*');
